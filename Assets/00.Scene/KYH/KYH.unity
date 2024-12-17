@@ -215,8 +215,100 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1950092003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2309329270818748260, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_Name
+      value: BackGroundSoundGather
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 395.34607
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1842.5204
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8101.216
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165530701350900332, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 1791168430518938970, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2309329270818748260, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1950092007}
+  m_SourcePrefab: {fileID: 100100000, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+--- !u!1 &1950092004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2309329270818748260, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+  m_PrefabInstance: {fileID: 1950092003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1950092005 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6740549814495063937, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+  m_PrefabInstance: {fileID: 1950092003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1950092006 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 404159382997953414, guid: bc4af2c0199ab7a42b23c0865e09f3d9, type: 3}
+  m_PrefabInstance: {fileID: 1950092003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1950092007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950092004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50175fbd9fb3ab14c873304eca0d7fd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: []
+  bgmAudioPlayer: {fileID: 1950092006}
+  vfxAudioPlayer: {fileID: 1950092005}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 529553499}
+  - {fileID: 1950092003}
