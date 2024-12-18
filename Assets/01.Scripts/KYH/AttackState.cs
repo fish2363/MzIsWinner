@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,13 @@ public class AttackState : State
         desiredAngle = Mathf.Atan2(airDir.y, airDir.x) * Mathf.Rad2Deg;
 
         _player.FilpWeapon(desiredAngle > 90f || desiredAngle < -90);
+        AttackStart();
     }
 
+    private void AttackStart()
+    {
 
+    }
 
     public override void StateUpdate()
     {
