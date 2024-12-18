@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, targetAngle);
 
-        rigid.velocity = direction.normalized * 10f;
+        rigid.velocity = direction.normalized * 30f;
     }
 
     private IEnumerator Disappear()
@@ -45,6 +45,9 @@ public class Bullet : MonoBehaviour
             ScreenShakeManager.Instance.ScreenShake(20, true, 0.2f, true, 0.2f);
             transform.DOScale(new Vector2(1 * 1.5f, 1 * 1.5f), 0.13f);
             sprite.DOFade(0, 0.1f).OnComplete(() => { Destroy(gameObject); });
+            
+            print("ÃÑ ¸ÂÀ½");
+        
         }
         
     }
