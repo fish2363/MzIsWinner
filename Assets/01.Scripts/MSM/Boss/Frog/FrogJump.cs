@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FrogJump : MonoBehaviour
 {
+    [SerializeField]
+    private Frog frog;
+
     private Transform targetPoint; // 목표 위치
     [SerializeField] private float firingAngle = 45.0f;
     [SerializeField] private float speed = 5f;
@@ -25,6 +28,7 @@ public class FrogJump : MonoBehaviour
 
     public void Attack()
     {
+        AnimationPlayer.Instance.PlayAnimaiton(frog.frogAnimator, "FrogJump");
         StartCoroutine(SimulateProjectile());
     }
     private IEnumerator SimulateProjectile()

@@ -15,17 +15,27 @@ public class FrogTongue : MonoBehaviour
     private bool isTongue;
 
     [SerializeField]
+    private Frog frog;
+
+    [SerializeField]
     private SpriteRenderer tongueSprite;
+
+    private Animator tongueAnim;
+
+    private float tongueTime;
+    private float tongueMaxTime = 3f;
+
 
     private void Awake()
     {
         player = FindAnyObjectByType<Player>();
+        tongueAnim = tongueSprite.GetComponent<Animator>();
     }
 
     public void Attack()
     {
         tongueSprite.DOKill();
-        tongueSprite.DOFade(0.7f, 1f);
+        tongueSprite.DOFade(1f, 1f);
         isTongue = true;
     }
 
@@ -34,7 +44,23 @@ public class FrogTongue : MonoBehaviour
         if(isTongue)
         {
             angle = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x) * Mathf.Rad2Deg;
-            tongue.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            tongue.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            tongueTime += Time.deltaTime;
         }
+        if(tongueMaxTime < tongueTime)
+        {
+            isTongue = false;
+            AnimationPlayer.Instance.PlayAnimaiton(tongueAnim, "Tongue");
+            StartCoroutine(Routine());
+        }
+    }
+
+    private IEnumerator Routine()
+    {
+        yield return new WaitForSeconds(1f);
+        isTongue = false;
+        frog.isTongueAttack = false;
+        tongueTime = 0f;
+        AnimationPlayer.Instance.PlayAnimaiton(tongueAnim, "TongueOut");
     }
 }

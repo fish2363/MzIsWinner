@@ -44,13 +44,16 @@ public class Bat : MonoBehaviour
 
     private IEnumerator WaitRoutine(Collider2D hit)
     {
-        yield return new WaitForSeconds(1f);
-        AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAppear");
-        animator.GetComponent<SpriteRenderer>().DOFade(1,1);
-        yield return new WaitForSeconds(1f);
-        eyeSprite.gameObject.SetActive(false);
-        isFind = true;
-        targetTrans = hit.transform;
+        if(!isFind)
+        {
+            yield return new WaitForSeconds(1f);
+            AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAppear");
+            animator.GetComponent<SpriteRenderer>().DOFade(1, 1);
+            yield return new WaitForSeconds(1f);
+            eyeSprite.gameObject.SetActive(false);
+            isFind = true;
+            targetTrans = hit.transform;
+        }
     }
 
     private void FixedUpdate()

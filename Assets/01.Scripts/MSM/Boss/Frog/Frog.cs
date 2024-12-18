@@ -5,8 +5,10 @@ using UnityEngine;
 public class Frog : MonoBehaviour
 {
     [SerializeField]Transform targetTrans;
+    public Animator frogAnimator;
 
     bool canAttack = true;
+    public bool isTongueAttack { get; set; }
     [SerializeField] float attackCoolTime;
     float _timer;
 
@@ -17,8 +19,13 @@ public class Frog : MonoBehaviour
     bool canJump;
     FrogJump jump;
 
+    [SerializeField]
+    private Transform groundChecker;
 
     FrogTongue tongue;
+    private LayerMask whatIsGround;
+    private Vector2 checkerSize;
+    private bool isGround;
 
     private void Awake()
     {
@@ -32,7 +39,12 @@ public class Frog : MonoBehaviour
     }
     private void Update()
     {
-        if(!canAttack)
+        Collider2D hit = Physics2D.OverlapBox(transform.position, checkerSize, whatIsGround);
+        if (hit != null)
+        {
+            AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogMouseOpen");
+        }
+        if (!canAttack && !isTongueAttack)
         {
             _timer += Time.deltaTime;
             if(_timer > attackCoolTime)
@@ -69,6 +81,7 @@ public class Frog : MonoBehaviour
                 break;
             case 1:
                 tongue.Attack();
+                isTongueAttack = true;
                 break;
             default:
                 break;
@@ -78,7 +91,7 @@ public class Frog : MonoBehaviour
 
     private void Attack()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 2);
         switch(rand)
         {
             case 0:
@@ -89,12 +102,16 @@ public class Frog : MonoBehaviour
                 JumpCoolTime = attackCoolTime + attackPlusJumpCool;
                 canJump = false;
                 break;
-            case 2:
-                //tongue.Attack();
-                break;
             default:
                 break;
         }
         canAttack = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(transform.position, checkerSize);
+        Gizmos.color = Color.white;
     }
 }
