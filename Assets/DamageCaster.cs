@@ -14,7 +14,6 @@ public class DamageCaster : MonoBehaviour
         if (damage != null)
         {
             damage.Damage(attackDamage);
-            ScreenShakeManager.Instance.ScreenShake(20f, true, 0.2f, true, 0.5f);
         }
     }
 }

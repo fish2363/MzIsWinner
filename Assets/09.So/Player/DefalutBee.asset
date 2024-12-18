@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49cb4626bcefeac44b353bb62b48f905, type: 3}
   m_Name: DefalutBee
   m_EditorClassIdentifier: 
-  maxHp: 2
-  moveSpeed: 8
+  maxHp: 4
+  moveSpeed: 5
   character: 0
   beeIdx: 0

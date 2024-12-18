@@ -70,6 +70,9 @@ public class Player : MonoBehaviour,IDamage
     [HideInInspector]
     public float checkerRadius =1f;
     public bool isUndead { get; set; }
+    public bool isShield { get; set; }
+
+    public SpriteRenderer bohoRenderer;
 
     private void Awake()
     {
@@ -175,11 +178,21 @@ public class Player : MonoBehaviour,IDamage
 
     public void Damage(int damage)
     {
-        if(!isUndead)
+        if(isShield)
+        {
+            StopCoroutine(ShieldRoutine());
+            bohoRenderer.DOFade(0f, 0.2f);
+            isStopMove = false;
+            isUndead = false;
+            ChangeState(StateEnum.Idle);
+        }
+
+        if (!isUndead)
         {
             CurrentHp -= damage;
             SpriteCompo.DOColor(Color.red, 0.1f);
             SpriteCompo.DOColor(Color.white, 0.1f).SetDelay(0.5f);
+            ScreenShakeManager.Instance.ScreenShake(20f, true, 0.2f, true, 0.5f);
             if (CurrentHp == 0)
                 Death();
         }
@@ -190,6 +203,22 @@ public class Player : MonoBehaviour,IDamage
         Time.timeScale = 0f;
         StartCoroutine(DeathWaitRoutine());
     }
+
+    public void Shield()
+    {
+        StartCoroutine(ShieldRoutine());
+    }
+
+    private IEnumerator ShieldRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        isStopMove = false;
+        isUndead = false;
+        bohoRenderer.DOFade(0f, 0.2f);
+        yield return new WaitForSeconds(0.3f);
+        ChangeState(StateEnum.Idle);
+    }
+
     private IEnumerator DeathWaitRoutine()
     {
         yield return new WaitForSeconds(1f);
