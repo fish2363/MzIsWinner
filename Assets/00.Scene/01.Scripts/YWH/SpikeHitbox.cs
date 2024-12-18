@@ -19,5 +19,6 @@ public class SpikeHitbox : MonoBehaviour
             isFalling = true;
         }
         
+        
     }
 }

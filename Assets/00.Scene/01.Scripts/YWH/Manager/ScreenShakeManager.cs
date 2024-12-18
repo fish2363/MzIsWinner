@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
 
-public class ScreenShakeManager : MonoBehaviour
+public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
 {
     private CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin noise;
@@ -25,7 +25,7 @@ public class ScreenShakeManager : MonoBehaviour
             DOTween.To(() => noise.m_AmplitudeGain, x => noise.m_AmplitudeGain = x, power, speed);
             if (autoEnd)
             {
-                
+                StartCoroutine(ScreenAutoEnd(wait, true, speed));
             }
         }
         else
@@ -33,7 +33,7 @@ public class ScreenShakeManager : MonoBehaviour
             noise.m_AmplitudeGain = power;
             if (autoEnd)
             {
-
+                StartCoroutine(ScreenAutoEnd(wait, false, speed));
             }
         }
 
@@ -52,9 +52,6 @@ public class ScreenShakeManager : MonoBehaviour
 
     }
 
-    public void SmoothShake(float power)
-    {
-       
-    }
+    
     
 }
