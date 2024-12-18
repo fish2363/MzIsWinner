@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.07006942, y: -0.114211865, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.3789, y: 2.3789, z: 2.3789}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 828510520684962593}
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <inputReader>k__BackingField: {fileID: 11400000, guid: 1814ba6ffa5113b4e8ebaedcf62765ea, type: 2}
   moveSpeed: 5
+  <PlayerAnimator>k__BackingField: {fileID: 468176499607620104}
   maxHp: 0
   currentHp: 0
 --- !u!61 &3874540751192402940
