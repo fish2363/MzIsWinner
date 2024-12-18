@@ -1433,8 +1433,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1803898280}
+  - component: {fileID: 1803898282}
+  - component: {fileID: 1803898281}
   m_Layer: 10
-  m_Name: GroundChecker
+  m_Name: FeetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1455,6 +1457,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2071940980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1803898281
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803898279}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.046608627, y: 0.20507881}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.2864013, y: 0.5898424}
+  m_EdgeRadius: 0
+--- !u!114 &1803898282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803898279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8917fbcd5e54684b84c17308f9802be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 1
 --- !u!1001 &1844315668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1676,8 +1736,7 @@ MonoBehaviour:
   frogAnimator: {fileID: 265924705}
   attackCoolTime: 1
   attackPlusJumpCool: 1.5
-  groundChecker: {fileID: 1803898280}
-  checkerSize: {x: 1.04, y: 0.52}
+  frogFeet: {fileID: 1803898281}
 --- !u!50 &2071940979
 Rigidbody2D:
   serializedVersion: 4
@@ -2314,7 +2373,7 @@ MonoBehaviour:
   - {fileID: 1686465828806394339}
   - {fileID: 7976835216514505431}
   attackDelay: 0.5
-  <DashPower>k__BackingField: 10
+  <DashPower>k__BackingField: 15
   attackPoint: {fileID: 0}
   currentChracter: {fileID: 0}
   whatIsEntity:
@@ -2401,9 +2460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 1.62, z: -10}
-  m_XDamping: 1
-  m_YDamping: 4.4
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -2419,7 +2478,7 @@ Animator:
   m_GameObject: {fileID: 6625373869760954339}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 21445a50c94556d408b363e77bc21af2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5789b8630d33b0140890bb11a4d958b5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

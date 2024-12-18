@@ -68,7 +68,7 @@ public class Player : MonoBehaviour,IDamage
     public int CurrentHp;
     [HideInInspector]
     public float checkerRadius =1f;
-
+    public bool isUndead { get; set; }
 
     private void Awake()
     {
@@ -173,9 +173,12 @@ public class Player : MonoBehaviour,IDamage
 
     public void Damage(int damage)
     {
-        CurrentHp -= damage;
-        if (CurrentHp == 0)
-            Death();
+        if(!isUndead)
+        {
+            CurrentHp -= damage;
+            if (CurrentHp == 0)
+                Death();
+        }
     }
 
     public void Death()
