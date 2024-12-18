@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8117044850182385431}
   - component: {fileID: 4918595836113995924}
   - component: {fileID: 4177487456994020042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Spit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,8 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11209d04081de324fbd22aa29919fbf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 5
   rb: {fileID: 4177487456994020042}
+  _timer: 3
 --- !u!50 &4177487456994020042
 Rigidbody2D:
   serializedVersion: 4

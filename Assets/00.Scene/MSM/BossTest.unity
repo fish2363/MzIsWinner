@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &455303537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 455303538}
+  - component: {fileID: 455303540}
+  - component: {fileID: 455303539}
+  m_Layer: 0
+  m_Name: FrogAttacks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &455303538
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455303537}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1029874901}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &455303539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455303537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e850c2320bbf0ef40b8f49a23450218d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spitPrefab: {fileID: 4416687166876486902, guid: 5d765826caceacf4bbf2b969060d9e45, type: 3}
+  distance: 1
+--- !u!114 &455303540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455303537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 216e357205b489145802dce42a22472f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firingAngle: 45
+  speed: 4.35
 --- !u!1 &860371246
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,11 +352,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1029874901}
   - component: {fileID: 1029874900}
-  - component: {fileID: 1029874902}
   - component: {fileID: 1029874903}
   - component: {fileID: 1029874904}
   - component: {fileID: 1029874905}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Frog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,28 +422,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029874899}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.17681152, y: -0.07145447, z: 0.0067638042, w: 0.98162425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.02, y: -3.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 455303538}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -20.253, y: -8.747, z: 2.355}
---- !u!114 &1029874902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029874899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 216e357205b489145802dce42a22472f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetPoint: {fileID: 1152388659}
-  firingAngle: 45
-  speed: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1029874903
 Rigidbody2D:
   serializedVersion: 4
@@ -455,12 +501,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1029874899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e850c2320bbf0ef40b8f49a23450218d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ffb10425683f6347b2c04a467cfb2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spitPrefab: {fileID: 4416687166876486902, guid: 5d765826caceacf4bbf2b969060d9e45, type: 3}
-  distance: 3
-  spitSpeed: 0
+  targetTrans: {fileID: 1152388659}
+  attackCoolTime: 1
+  attackPlusJumpCool: 1.5
 --- !u!1 &1152388657
 GameObject:
   m_ObjectHideFlags: 0
