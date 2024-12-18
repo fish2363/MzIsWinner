@@ -13,7 +13,7 @@ public class IdleState : State
     {
         base.Exit();
         _player.RigidCompo.velocity = Vector3.zero;
-        _player.PlayAnimaiton(AnimationType.PlayerIdle);
+        AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo,"PlayerIdle");
     }
 
     public override void StateUpdate()

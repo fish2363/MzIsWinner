@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 
     [field: SerializeField] public Animator PlayerAnimator { get; private set; }
     public Rigidbody2D RigidCompo { get; private set; }
+    public Animator AnimatorCompo { get; private set; }
     private Dictionary<StateEnum, State> stateDictionary = new Dictionary<StateEnum, State>();
     private StateEnum currentEnum;
 
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         RigidCompo = GetComponent<Rigidbody2D>();
+        AnimatorCompo = GetComponentInChildren<Animator>();
         attackPoint = GetComponentInChildren<AttackPoint>();
 
         foreach (StateEnum enumState in Enum.GetValues(typeof(StateEnum)))
@@ -68,6 +70,14 @@ public class Player : MonoBehaviour
 
         inputReader.OnAttackEvent += HandleAttackEvent;
         inputReader.OnAttackingEvent += HandleAttackingEvent;
+        inputReader.OnDashEvent += HandleDashEvent;
+    }
+
+    private void HandleDashEvent()
+    {
+        if (isAttack) return;
+
+        ChangeState(StateEnum.Dash);
     }
 
     private void HandleAttackingEvent(bool isOnoff)
@@ -90,6 +100,17 @@ public class Player : MonoBehaviour
         mouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition);//스크린을 월드 좌표계로 바꾼다
         mouseDir.Normalize();
         return mouseDir;
+    }
+
+    public void FilpWeapon(bool value)
+    {
+        int flip = (value ? -1 : 1);
+
+        if(flip == 1)
+            GetComponentInChildren<SpriteRenderer>().flipX = false;
+        else
+            GetComponentInChildren<SpriteRenderer>().flipX = true;
+
     }
 
     public void AttackWait()
@@ -117,25 +138,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void PlayAnimaiton(AnimationType animationType)
-    {
-        Play(animationType);
-    }
-
-    internal void StopAnimation()
-    {
-        PlayerAnimator.enabled = false;
-    }
-    internal void StartAnimation()
-    {
-        PlayerAnimator.enabled = true;
-    }
-
-    public void Play(AnimationType name)
-    {
-        PlayerAnimator.Play(name.ToString());
-    }
-
+    
     public void ChangeState(StateEnum newEnum)
     {
         stateDictionary[currentEnum].Exit();

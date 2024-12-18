@@ -10,6 +10,6 @@ public class NextAnimator : MonoBehaviour
     public void AttackingAnimation()
     {
         print("½ÇÇàµÊ");
-        player.PlayAnimaiton(AnimationType.PlayerAttacking);
+        AnimationPlayer.Instance.PlayAnimaiton(player.AnimatorCompo,"PlayerAttacking");
     }
 }

@@ -12,7 +12,7 @@ public class MoveState : State
     public override void Enter()
     {
         base.Enter();
-        _player.PlayAnimaiton(AnimationType.PlayerMove);
+        AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo, "PlayerMove");
     }
 
     public override void StateFixedUpdate()
