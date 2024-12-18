@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [field: SerializeField] public InputReader inputReader { get; private set; }
     public float moveSpeed;
 
+    public Animator PlayerAnimator { get; private set; }
     public Rigidbody2D RigidCompo { get; private set; }
     private Dictionary<StateEnum, State> stateDictionary = new Dictionary<StateEnum, State>();
     private StateEnum currentEnum;
@@ -70,6 +71,25 @@ public class Player : MonoBehaviour
             ChangeState(StateEnum.Attack);
             isStopMove = true;
         }
+    }
+
+    public void PlayAnimaiton(AnimationType animationType)
+    {
+        Play(animationType);
+    }
+
+    internal void StopAnimation()
+    {
+        PlayerAnimator.enabled = false;
+    }
+    internal void StartAnimation()
+    {
+        PlayerAnimator.enabled = true;
+    }
+
+    public void Play(AnimationType name)
+    {
+        PlayerAnimator.Play(name.ToString());
     }
 
     public void ChangeState(StateEnum newEnum)
