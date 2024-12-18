@@ -10,10 +10,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     private void Awake()
     {
         player = FindAnyObjectByType<Player>();
-    }
-
-    private void Start()
-    {
         ReStart();
     }
 

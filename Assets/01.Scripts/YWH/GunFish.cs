@@ -67,22 +67,34 @@ public class GunFish : MonoBehaviour
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
             RotateTowardsPlayer();
+
             yield return null;
         }
 
         spriteRenderer.DOFade(1f, fadeDuration);
         yield return new WaitForSeconds(fadeDuration);
-
+        RotateTowardsPlayer();
         yield return ShootAtPlayer();
     }
 
     private void RotateTowardsPlayer()
     {
+        // 플레이어 방향 계산
         Vector3 direction = player.position - transform.position;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, targetAngle), 360f * Time.deltaTime);
+
+        targetAngle = Mathf.Clamp(targetAngle, 50f, 140f);
+
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            Quaternion.Euler(0, 0, targetAngle),
+            360f * Time.deltaTime
+        );
     }
+
+
 
     private IEnumerator ShootAtPlayer()
     {

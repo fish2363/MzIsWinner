@@ -31,7 +31,7 @@ public class AttackState : State
 
     private void AttackStart()
     {
-        //¿ÏÈñ¾ß È¿°úÁà·Î
+        ScreenShakeManager.Instance.AttackEffect();
     }
 
     public override void StateUpdate()
