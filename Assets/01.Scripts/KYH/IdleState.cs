@@ -9,10 +9,11 @@ public class IdleState : State
 
     }
 
-    public override void Exit()
+    public override void Enter()
     {
         base.Exit();
         _player.RigidCompo.velocity = Vector3.zero;
+        _player.PlayAnimaiton(AnimationType.PlayerIdle);
     }
 
     public override void StateUpdate()
