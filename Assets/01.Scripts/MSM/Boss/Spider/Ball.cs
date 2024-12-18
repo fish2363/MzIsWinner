@@ -30,11 +30,7 @@ public class Ball : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(((1 << collision.gameObject.layer) & spit) != 0)
-        {
-            rb.velocity += new Vector2(1,1);
-        }
-        else if (((1 << collision.gameObject.layer) & mask) != 0)
+        if (((1 << collision.gameObject.layer) & mask) != 0)
         {
             Ball b = collision.gameObject.GetComponent<Ball>();
 
@@ -42,6 +38,13 @@ public class Ball : MonoBehaviour
             Vector3 normal = collision.contacts[0].normal;
             b.MovePos = Vector3.Reflect(income, normal).normalized;
             b.SetVelocity();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & spit) != 0)
+        {
+            rb.velocity *= new Vector2(1.05f, 1.05f);
         }
     }
 }
