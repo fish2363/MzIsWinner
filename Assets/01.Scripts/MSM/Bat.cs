@@ -21,6 +21,8 @@ public class Bat : MonoBehaviour
     private bool end = false;
     [SerializeField]private bool isFind = false;
     private Animator animator;
+    [SerializeField]
+    private int attackDamage;
 
     private void Awake()
     {
@@ -58,6 +60,7 @@ public class Bat : MonoBehaviour
             Vector3 moveDir;
             if(_timer <= 0&& once)
             {
+                transform.DOKill();
                 moveDir = targetTrans.position - transform.position;
                 rb.velocity = moveDir.normalized * speed * 3;
                 AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAttack");
@@ -79,10 +82,23 @@ public class Bat : MonoBehaviour
             }
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         end = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        IDamage damage = other.GetComponent<IDamage>();
+
+        if (damage != null)
+        {
+            damage.Damage(attackDamage);
+            ScreenShakeManager.Instance.ScreenShake(20f,true,0.2f,true,0.5f);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
