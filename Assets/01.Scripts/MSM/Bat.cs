@@ -4,6 +4,7 @@ using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class Bat : MonoBehaviour
 {
@@ -23,12 +24,14 @@ public class Bat : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private int attackDamage;
+    private Light2D light;
 
     private void Awake()
     {
         animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         _timer = Random.Range(_timerMin, _timerMax);
+        light = GetComponentInChildren<Light2D>();
     }
     private void Update()
     {
@@ -47,11 +50,15 @@ public class Bat : MonoBehaviour
     }
 
     private IEnumerator WaitRoutine()
-    {
+    {   
+        
         yield return new WaitForSeconds(1f);
         print("BatAppear");
+        DOTween.To(() => light.intensity, x => light.intensity = x, 25, 0.5f);
         AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAppear");
+        yield return new WaitForSeconds(1f);
         animator.GetComponent<SpriteRenderer>().DOFade(1, 1);
+       
         yield return new WaitForSeconds(1f);
         eyeSprite.gameObject.SetActive(false);
         isFind = true;
