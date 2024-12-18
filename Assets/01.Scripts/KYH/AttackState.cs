@@ -8,4 +8,10 @@ public class AttackState : State
     {
 
     }
+
+    public override void StateUpdate()
+    {
+        base.StateUpdate();
+        _player.RigidCompo.velocity = _player.mouseDir * _player.moveSpeed;
+    }
 }

@@ -12,7 +12,7 @@ public enum StateEnum
 
 public class Player : MonoBehaviour
 {
-    public InputReader inputReader;
+    [field: SerializeField] public InputReader inputReader { get; private set; }
     public float moveSpeed;
 
     public Rigidbody2D RigidCompo { get; private set; }
@@ -26,7 +26,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     protected float currentHp;
 
-    public bool isAttack { get; set; }
+    public Vector2 mouseDir { get; private set; }
+
+    public bool isStopMove { get; set; }
 
     private void Awake()
     {
@@ -46,6 +48,14 @@ public class Player : MonoBehaviour
     private void Update()
     {
         stateDictionary[currentEnum].StateUpdate();
+
+        GetWorldMousePosition();
+    }
+
+    public Vector3 GetWorldMousePosition()
+    {
+        mouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition);//½ºÅ©¸°À» ¿ùµå ÁÂÇ¥°è·Î ¹Ù²Û´Ù
+        return mouseDir;
     }
 
     private void FixedUpdate()
@@ -55,16 +65,15 @@ public class Player : MonoBehaviour
 
     private void HandleAttackEvent()
     {
-        if (!isAttack)
+        if (!isStopMove)
         {
             ChangeState(StateEnum.Attack);
-            isAttack = true;
+            isStopMove = true;
         }
     }
 
     public void ChangeState(StateEnum newEnum)
     {
-        print($"{currentEnum}¹Ù²ñ");
         stateDictionary[currentEnum].Exit();
         currentEnum = newEnum;
         stateDictionary[currentEnum].Enter();
