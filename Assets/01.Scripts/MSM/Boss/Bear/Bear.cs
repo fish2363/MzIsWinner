@@ -7,12 +7,10 @@ public class Bear : MonoBehaviour
     [SerializeField]Transform targetTrans;
     BearHead head;
     BearStamp stamp;
-    BearScratch scratch;
     private void Awake()
     {
         head = GetComponentInChildren<BearHead>();
         stamp = GetComponentInChildren<BearStamp>();
-        scratch = GetComponentInChildren<BearScratch>();
     }
     private void Start()
     {

@@ -5,11 +5,15 @@ using UnityEngine.InputSystem;
 
 public class FrogSpit : MonoBehaviour
 {
+    [SerializeField]
+    private Frog frog;
+
     [SerializeField] GameObject spitPrefab;
     [SerializeField] float distance;
     float[] angles = new float[] { 135, 180, -135, 90 , -90, 45, 0, -45 };
     public void Attack()
     {
+        AnimationPlayer.Instance.PlayAnimaiton(frog.frogAnimator, "FrogMouseOpen");
         int angleIndex = 0;
         for (int i = -1; i <= 1; i++)
         {
