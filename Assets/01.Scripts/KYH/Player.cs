@@ -12,9 +12,9 @@ public enum StateEnum
 
 public enum AnimationType
 {
-    Idle,
-    Attack,
-    Move,
+    PlayerIdle,
+    PlayerAttackReady,
+    PlayerMove,
 }
 
 
@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     [field: SerializeField] public InputReader inputReader { get; private set; }
     public float moveSpeed;
 
-    public Animator PlayerAnimator { get; private set; }
+    [field: SerializeField] public Animator PlayerAnimator { get; private set; }
     public Rigidbody2D RigidCompo { get; private set; }
     private Dictionary<StateEnum, State> stateDictionary = new Dictionary<StateEnum, State>();
     private StateEnum currentEnum;
@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
     public Vector3 GetWorldMousePosition()
     {
         mouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition);//스크린을 월드 좌표계로 바꾼다
+        mouseDir.Normalize();
         return mouseDir;
     }
 
