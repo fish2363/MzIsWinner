@@ -16,14 +16,19 @@ public class AttackState : State
     {
         base.Enter();
         _player.PlayAnimaiton(AnimationType.PlayerAttackReady);
-        mouseDirect = _player.mouseDir;
+        mouseDirect = _player.GetWorldMousePosition();
+        _player.AttackWait();
     }
+
+   
 
     public override void StateUpdate()
     {
         base.StateUpdate();
-
-        _player.RigidCompo.velocity = mouseDirect.normalized * attackSpeed;
-        attackSpeed += Time.deltaTime;
+        if(_player.isAttack)
+        {
+            _player.RigidCompo.velocity = mouseDirect * attackSpeed;
+            attackSpeed += Time.deltaTime * 3f;
+        }
     }
 }

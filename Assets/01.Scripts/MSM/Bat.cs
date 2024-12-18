@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class Bat : MonoBehaviour
 {
@@ -34,14 +34,6 @@ public class Bat : MonoBehaviour
         {
             isFind = true;
             targetTrans = hit.transform;
-            if (targetTrans.position.x - transform.position.x > -distance.x)
-            {
-                distance.x = Mathf.Abs(distance.x);
-            }
-            else
-            {
-                distance.x = -Mathf.Abs(distance.x);
-            }
         }
     }
     private void FixedUpdate()
@@ -60,7 +52,8 @@ public class Bat : MonoBehaviour
                 _time += Time.deltaTime;
                 float X = Mathf.Sin(_time * speed) * distance.x;
                 moveDir = new Vector3(X/2f, distance.y, 0f);
-                transform.position = targetTrans.position + moveDir;
+                transform.DOMove(targetTrans.position + moveDir,1f);
+                //transform.position = targetTrans.position + moveDir;
             }
             else if(end)
             {

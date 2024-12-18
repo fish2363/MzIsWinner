@@ -12,7 +12,7 @@ public class MoveState : State
     public override void Enter()
     {
         base.Enter();
-        _player.PlayAnimaiton(AnimationType.PlayerAttackReady);
+        _player.PlayAnimaiton(AnimationType.PlayerMove);
     }
 
     public override void StateFixedUpdate()

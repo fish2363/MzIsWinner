@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
 {
     public event Action<Vector2> OnMoveEvent;
     public event Action OnAttackEvent;
+    public event Action<bool> OnAttackingEvent;
     public Vector2 moveDir { get; private set; }
 
     private KeyAction playerKeyAction;
@@ -36,7 +37,12 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
     {
         if(context.performed)
         {
+            OnAttackingEvent?.Invoke(true);
+        }
+        if(context.canceled)
+        {
             OnAttackEvent?.Invoke();
+            OnAttackingEvent?.Invoke(false);
         }
     }
 }
