@@ -10,7 +10,6 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
     public event Action<Vector2> OnMoveEvent;
     public event Action OnAttackEvent;
     public Vector2 moveDir { get; private set; }
-    public Vector2 mouseDir { get; private set; }
 
     private KeyAction playerKeyAction;
 
@@ -31,11 +30,7 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
         OnMoveEvent?.Invoke(moveDir);
     }
 
-    public Vector3 GetWorldMousePosition()
-    {
-        mouseDir = Camera.main.ScreenToWorldPoint(Input.mousePosition);//스크린을 월드 좌표계로 바꾼다
-        return mouseDir;
-    }
+    
 
     public void OnAttack(InputAction.CallbackContext context)
     {
