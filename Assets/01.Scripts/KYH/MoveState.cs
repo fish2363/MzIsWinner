@@ -21,6 +21,11 @@ public class MoveState : State
         if(!_player.isStopMove)
             _player.RigidCompo.velocity = _player.inputReader.moveDir * _player.moveSpeed;
 
+        if (_player.inputReader.moveDir.x > 0)
+            _player.GetComponentInChildren<SpriteRenderer>().flipX = false;
+        else if (_player.inputReader.moveDir.x < 0)
+            _player.GetComponentInChildren<SpriteRenderer>().flipX = true;
+
 
         if (_player.inputReader.moveDir == Vector2.zero)
         {
