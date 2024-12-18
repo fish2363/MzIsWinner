@@ -7,6 +7,10 @@ public class Spit : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float _timer;
+    private void Start()
+    {
+        rb.velocity = transform.up * speed;
+    }
     private void Update()
     {
         _timer -= Time.deltaTime;
@@ -14,10 +18,6 @@ public class Spit : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-    private void FixedUpdate()
-    {
-        rb.velocity = transform.up * speed;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
