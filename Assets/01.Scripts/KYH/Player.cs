@@ -10,6 +10,14 @@ public enum StateEnum
     Attack
 }
 
+public enum AnimationType
+{
+    Idle,
+    Attack,
+    Move,
+}
+
+
 public class Player : MonoBehaviour
 {
     [field: SerializeField] public InputReader inputReader { get; private set; }
