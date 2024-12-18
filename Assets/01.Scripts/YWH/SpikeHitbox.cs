@@ -6,6 +6,7 @@ public class SpikeHitbox : MonoBehaviour
 {
     private Rigidbody2D spikeRigid;
     private bool isFalling;
+    [SerializeField] bool isUp;
 
     private void Awake()
     {
@@ -15,7 +16,10 @@ public class SpikeHitbox : MonoBehaviour
     {
         if (!isFalling)
         {
-            spikeRigid.AddForce(Vector2.down * 5, ForceMode2D.Impulse);
+            if (isUp)
+            spikeRigid.AddForce(Vector2.up * Random.Range(5, 13), ForceMode2D.Impulse);
+            else
+            spikeRigid.AddForce(Vector2.down * Random.Range(5, 13), ForceMode2D.Impulse);
             isFalling = true;
         }
         
