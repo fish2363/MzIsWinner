@@ -1436,7 +1436,7 @@ GameObject:
   - component: {fileID: 1803898282}
   - component: {fileID: 1803898281}
   m_Layer: 10
-  m_Name: GroundChecker
+  m_Name: FeetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1736,6 +1736,7 @@ MonoBehaviour:
   frogAnimator: {fileID: 265924705}
   attackCoolTime: 1
   attackPlusJumpCool: 1.5
+  frogFeet: {fileID: 1803898281}
 --- !u!50 &2071940979
 Rigidbody2D:
   serializedVersion: 4
@@ -2372,7 +2373,7 @@ MonoBehaviour:
   - {fileID: 1686465828806394339}
   - {fileID: 7976835216514505431}
   attackDelay: 0.5
-  <DashPower>k__BackingField: 10
+  <DashPower>k__BackingField: 15
   attackPoint: {fileID: 0}
   currentChracter: {fileID: 0}
   whatIsEntity:
@@ -2459,9 +2460,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 1.62, z: -10}
-  m_XDamping: 1
-  m_YDamping: 4.4
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -2477,7 +2478,7 @@ Animator:
   m_GameObject: {fileID: 6625373869760954339}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 21445a50c94556d408b363e77bc21af2, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5789b8630d33b0140890bb11a4d958b5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
