@@ -12,17 +12,25 @@ public class MoveState : State
     public override void Enter()
     {
         base.Enter();
-        _player.inputReader.OnMoveEvent += OnMove;
     }
 
-    private void OnMove(Vector2 obj)
+    public override void StateFixedUpdate()
     {
-        _player.RigidCompo.velocity = obj * _player.moveSpeed;
+        base.StateFixedUpdate();
+        if(!_player.isStopMove)
+            _player.RigidCompo.velocity = _player.inputReader.moveDir * _player.moveSpeed;
+
+
+        if (_player.inputReader.moveDir == Vector2.zero)
+        {
+            print("Idle¹Ù²ñ");
+            _player.ChangeState(StateEnum.Idle);
+        }
     }
+
 
     public override void Exit()
     {
-        _player.inputReader.OnMoveEvent -= OnMove;
         base.Exit();
     }
 }

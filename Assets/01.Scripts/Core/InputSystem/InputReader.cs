@@ -19,9 +19,9 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
         if (playerKeyAction == null)
         {
             playerKeyAction = new KeyAction();
-            playerKeyAction.Player.SetCallbacks(this);  //플레이어 인풋이 발생하면 이 인스턴스를 연결
+            playerKeyAction.Player.SetCallbacks(this);
         }
-        playerKeyAction.Player.Enable(); //활성화
+        playerKeyAction.Player.Enable();
     }
 
     public void OnMove(InputAction.CallbackContext context)
