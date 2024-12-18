@@ -29,8 +29,8 @@ public class Bat : MonoBehaviour
     {
         if (isFind)
             _timer -= Time.deltaTime;
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, checkerRadius, Vector2.zero, player);
-        if(hit.collider != null)
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, checkerRadius, player);
+        if(hit != null)
         {
             isFind = true;
             targetTrans = hit.transform;
