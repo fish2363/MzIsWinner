@@ -7,6 +7,10 @@ public class Spit : MonoBehaviour
     [SerializeField] float speed;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] float _timer;
+    private void Start()
+    {
+        rb.velocity = transform.up * speed;
+    }
 
     [SerializeField]
     private int attackDamage;
@@ -19,14 +23,6 @@ public class Spit : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void FixedUpdate()
-    {
-        rb.velocity = transform.up * speed;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,5 +33,6 @@ public class Spit : MonoBehaviour
             damage.Damage(attackDamage);
             ScreenShakeManager.Instance.ScreenShake(20f, true, 0.2f, true, 0.5f);
         }
+        Destroy(gameObject);
     }
 }

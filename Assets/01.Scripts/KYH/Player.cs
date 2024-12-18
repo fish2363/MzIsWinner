@@ -1,4 +1,3 @@
-using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,7 +25,7 @@ public interface IDamage
 }
 
 
-public class Player : MonoBehaviour, IDamage
+public class Player : MonoBehaviour,IDamage
 {
     [field: SerializeField] public InputReader inputReader { get; private set; }
 
@@ -40,7 +39,6 @@ public class Player : MonoBehaviour, IDamage
     [SerializeField]
     private Animator[] animators;
     public Animator AnimatorCompo { get; private set; }
-    public SpriteRenderer SpriteCompo { get; private set; }
 
 
     private Dictionary<StateEnum, State> stateDictionary = new Dictionary<StateEnum, State>();
@@ -69,8 +67,8 @@ public class Player : MonoBehaviour, IDamage
     [Header("현재 체력")]
     public int CurrentHp;
     [HideInInspector]
-    public float checkerRadius = 1f;
-
+    public float checkerRadius =1f;
+    public bool isUndead { get; set; }
 
     private void Awake()
     {
@@ -93,9 +91,8 @@ public class Player : MonoBehaviour, IDamage
     {
         moveSpeed = currentChracter.moveSpeed;
         MaxHp = currentChracter.maxHp;
-        CurrentHp = MaxHp;
+        CurrentHp= MaxHp;
         AnimatorCompo = animators[currentChracter.beeIdx];
-        SpriteCompo = AnimatorCompo.GetComponent<SpriteRenderer>();
         AnimatorCompo.gameObject.SetActive(true);
         ChangeState(StateEnum.Idle);
     }
@@ -133,7 +130,7 @@ public class Player : MonoBehaviour, IDamage
     {
         int flip = (value ? -1 : 1);
 
-        if (flip == 1)
+        if(flip == 1)
             GetComponentInChildren<SpriteRenderer>().flipX = false;
         else
             GetComponentInChildren<SpriteRenderer>().flipX = true;
@@ -165,7 +162,7 @@ public class Player : MonoBehaviour, IDamage
         }
     }
 
-
+    
     public void ChangeState(StateEnum newEnum)
     {
         print($"{currentEnum}에서 {newEnum}로");
@@ -176,14 +173,13 @@ public class Player : MonoBehaviour, IDamage
 
     public void Damage(int damage)
     {
-        CurrentHp -= damage;
-        SpriteCompo.DOColor(Color.red, 0.1f);
-        SpriteCompo.DOColor(Color.white, 0.1f).SetDelay(0.5f);
-        if (CurrentHp == 0)
-            Death();
+        if(!isUndead)
+        {
+            CurrentHp -= damage;
+            if (CurrentHp == 0)
+                Death();
+        }
     }
-
-
 
     public void Death()
     {
