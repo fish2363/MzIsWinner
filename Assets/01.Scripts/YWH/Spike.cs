@@ -17,6 +17,6 @@ public class Spike : MonoBehaviour
     {
         transform.DOScale(new Vector3(transform.position.x * 0.5f, transform.position.y * 0.5f), 0.5f);
         spikeSprite.DOFade(0, 0.4f);
-        ScreenShakeManager.Instance.ScreenShake(30, true, 0.5f, true, 0.2f);
+        ScreenShakeManager.Instance.ScreenShake(30, true, 0.5f, true, 0.2f);    
     }
 }
