@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class AttackPoint : MonoBehaviour
 {
+
+
     private Player player;
     private float angle;
     private SpriteRenderer attackPoint;

@@ -14,7 +14,7 @@ public class SpikeHitbox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isFalling)
+        if (!isFalling && collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             if (isUp)
             spikeRigid.AddForce(Vector2.up * Random.Range(5, 13), ForceMode2D.Impulse);

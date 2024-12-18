@@ -29,7 +29,6 @@ public class MoveState : State
 
         if (_player.inputReader.moveDir == Vector2.zero)
         {
-            print("Idle¹Ù²ñ");
             _player.ChangeState(StateEnum.Idle);
         }
     }

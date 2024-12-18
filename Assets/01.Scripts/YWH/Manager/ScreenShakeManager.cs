@@ -8,6 +8,9 @@ public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
 {
     private CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin noise;
+    private CinemachineConfiner2D confiner;
+    
+    private CanvasGroup vignette;
 
     private bool isFalling;
 
@@ -15,6 +18,8 @@ public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();
         noise = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        vignette = GetComponentInChildren<CanvasGroup>();
+        confiner = GetComponent<CinemachineConfiner2D>();
     }
 
     public void ScreenShake(float power, bool isTween,float speed, bool autoEnd, float wait)
@@ -50,6 +55,27 @@ public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
         else
             noise.m_AmplitudeGain = 0;
 
+    }
+
+    public void AttackEffect()
+    {
+        ScreenShake(5, true, 0.2f, true, 1.5f);
+
+        var transposer = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>();
+        if (transposer != null)
+        {
+            transposer.m_XDamping = 0f;
+            transposer.m_YDamping = 0f;
+        }
+
+        vignette.DOFade(1, 0.2f);
+
+       
+        DOTween.To(() => virtualCamera.m_Lens.OrthographicSize, x => virtualCamera.m_Lens.OrthographicSize = x, 2.3f, 1f).OnComplete(() => 
+        { DOTween.To(() => virtualCamera.m_Lens.Dutch, x => virtualCamera.m_Lens.Dutch = x, 18f, 1f); });
+
+
+        
     }
 
     

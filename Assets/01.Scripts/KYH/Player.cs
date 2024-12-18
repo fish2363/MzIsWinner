@@ -19,8 +19,13 @@ public enum AnimationType
     PlayerAttacking,
 }
 
+public interface IDamage
+{
+    void Damage(int damage);
+}
 
-public class Player : MonoBehaviour
+
+public class Player : MonoBehaviour,IDamage
 {
     [field: SerializeField] public InputReader inputReader { get; private set; }
 
@@ -29,21 +34,21 @@ public class Player : MonoBehaviour
 
     [field: SerializeField] public Animator PlayerAnimator { get; private set; }
     public Rigidbody2D RigidCompo { get; private set; }
+
+
+    [SerializeField]
+    private Animator[] animators;
     public Animator AnimatorCompo { get; private set; }
+
+
     private Dictionary<StateEnum, State> stateDictionary = new Dictionary<StateEnum, State>();
     private StateEnum currentEnum;
 
-    public float MaxHp { get { return maxHp; } }
-    public float CurrentHp { get { return currentHp; } }
-    [Header("최대 체력")]
-    [SerializeField]
-    protected float maxHp;
-    [Header("현재 체력")]
-    [SerializeField]
-    protected float currentHp;
     [Header("공격 딜레이")]
     [SerializeField]
     private float attackDelay;
+
+    [field: SerializeField] public float DashPower { get; private set; }
 
     [HideInInspector]
     public AttackPoint attackPoint;
@@ -53,11 +58,21 @@ public class Player : MonoBehaviour
     public bool isStopMove { get; set; }
     public bool isAttack { get; set; }
 
+    public CharacterSO currentChracter;
+
+    public LayerMask whatIsEntity;
+
+    [Header("최대 체력")]
+    public int MaxHp = 3;
+    [Header("현재 체력")]
+    public int CurrentHp;
+    [HideInInspector]
+    public float checkerRadius =1f;
+
 
     private void Awake()
     {
         RigidCompo = GetComponent<Rigidbody2D>();
-        AnimatorCompo = GetComponentInChildren<Animator>();
         attackPoint = GetComponentInChildren<AttackPoint>();
 
         foreach (StateEnum enumState in Enum.GetValues(typeof(StateEnum)))
@@ -66,11 +81,20 @@ public class Player : MonoBehaviour
             State state = Activator.CreateInstance(t, new object[] { this }) as State;
             stateDictionary.Add(enumState, state);
         }
-        ChangeState(StateEnum.Idle);
 
         inputReader.OnAttackEvent += HandleAttackEvent;
         inputReader.OnAttackingEvent += HandleAttackingEvent;
         inputReader.OnDashEvent += HandleDashEvent;
+    }
+
+    private void Start()
+    {
+        moveSpeed = currentChracter.moveSpeed;
+        MaxHp = currentChracter.maxHp;
+        CurrentHp= MaxHp;
+        AnimatorCompo = animators[currentChracter.beeIdx];
+        AnimatorCompo.gameObject.SetActive(true);
+        ChangeState(StateEnum.Idle);
     }
 
     private void HandleDashEvent()
@@ -141,8 +165,27 @@ public class Player : MonoBehaviour
     
     public void ChangeState(StateEnum newEnum)
     {
+        print($"{currentEnum}에서 {newEnum}로");
         stateDictionary[currentEnum].Exit();
         currentEnum = newEnum;
         stateDictionary[currentEnum].Enter();
+    }
+
+    public void Damage(int damage)
+    {
+        CurrentHp -= damage;
+        if (CurrentHp == 0)
+            Death();
+    }
+
+    public void Death()
+    {
+        Time.timeScale = 0f;
+        StartCoroutine(DeathWaitRoutine());
+    }
+    private IEnumerator DeathWaitRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        SpawnManager.Instance.ReStart();
     }
 }

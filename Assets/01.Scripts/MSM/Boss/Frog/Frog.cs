@@ -5,8 +5,10 @@ using UnityEngine;
 public class Frog : MonoBehaviour
 {
     [SerializeField]Transform targetTrans;
+    public Animator frogAnimator;
 
     bool canAttack = true;
+    public bool isTongueAttack { get; set; }
     [SerializeField] float attackCoolTime;
     float _timer;
 
@@ -17,8 +19,13 @@ public class Frog : MonoBehaviour
     bool canJump;
     FrogJump jump;
 
+    [SerializeField]
+    private Transform groundChecker;
 
     FrogTongue tongue;
+    private LayerMask whatIsGround;
+    [SerializeField]
+    private Vector2 checkerSize;
 
     private void Awake()
     {
@@ -32,7 +39,7 @@ public class Frog : MonoBehaviour
     }
     private void Update()
     {
-        if(!canAttack)
+        if (!canAttack && !isTongueAttack)
         {
             _timer += Time.deltaTime;
             if(_timer > attackCoolTime)
@@ -61,14 +68,18 @@ public class Frog : MonoBehaviour
 
     private void NoJumpAttack()
     {
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 3);
         switch (rand)
         {
             case 0:
                 spit.Attack();
                 break;
             case 1:
-                //tongue.Attack();
+                tongue.Attack();
+                isTongueAttack = true;
+                break;
+            case 2:
+                Rest();
                 break;
             default:
                 break;
@@ -78,7 +89,7 @@ public class Frog : MonoBehaviour
 
     private void Attack()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 2);
         switch(rand)
         {
             case 0:
@@ -89,12 +100,25 @@ public class Frog : MonoBehaviour
                 JumpCoolTime = attackCoolTime + attackPlusJumpCool;
                 canJump = false;
                 break;
-            case 2:
-                //tongue.Attack();
-                break;
             default:
                 break;
         }
         canAttack = false;
+    }
+
+    private void Rest()
+    {
+        AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogRest");
+        StartCoroutine(Wait());
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2.3f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogIdle");
     }
 }

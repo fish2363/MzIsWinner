@@ -21,6 +21,8 @@ public class Bat : MonoBehaviour
     private bool end = false;
     [SerializeField]private bool isFind = false;
     private Animator animator;
+    [SerializeField]
+    private int attackDamage;
 
     private void Awake()
     {
@@ -32,23 +34,27 @@ public class Bat : MonoBehaviour
     {
         if (isFind)
             _timer -= Time.deltaTime;
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, checkerRadius, player);
-        if(hit != null)
+        if (!isFind)
         {
-            eyeSprite.DOFade(1,0.2f);
-            StartCoroutine(WaitRoutine(hit));
+            Collider2D hit = Physics2D.OverlapCircle(transform.position, checkerRadius, player);
+            if (hit != null)
+            {
+                eyeSprite.DOFade(1, 0.2f);
+                StartCoroutine(WaitRoutine());
+                targetTrans = hit.transform;
+            }
         }
     }
 
-    private IEnumerator WaitRoutine(Collider2D hit)
+    private IEnumerator WaitRoutine()
     {
         yield return new WaitForSeconds(1f);
+        print("BatAppear");
         AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAppear");
-        animator.GetComponent<SpriteRenderer>().DOFade(1,1);
+        animator.GetComponent<SpriteRenderer>().DOFade(1, 1);
         yield return new WaitForSeconds(1f);
         eyeSprite.gameObject.SetActive(false);
         isFind = true;
-        targetTrans = hit.transform;
     }
 
     private void FixedUpdate()
@@ -58,6 +64,7 @@ public class Bat : MonoBehaviour
             Vector3 moveDir;
             if(_timer <= 0&& once)
             {
+                transform.DOKill();
                 moveDir = targetTrans.position - transform.position;
                 rb.velocity = moveDir.normalized * speed * 3;
                 AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAttack");
@@ -65,10 +72,12 @@ public class Bat : MonoBehaviour
             }
             else if (once)
             {
+                StopCoroutine(WaitRoutine());
                 _time += Time.deltaTime;
                 float X = Mathf.Sin(_time * speed) * distance.x;
                 moveDir = new Vector3(X/2f, distance.y, 0f);
                 transform.DOMove(targetTrans.position + moveDir,1f);
+                print("BatFlying");
                 AnimationPlayer.Instance.PlayAnimaiton(animator,"BatFlying");
                 //transform.position = targetTrans.position + moveDir;
             }
@@ -79,10 +88,23 @@ public class Bat : MonoBehaviour
             }
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         end = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        IDamage damage = other.GetComponent<IDamage>();
+
+        if (damage != null)
+        {
+            damage.Damage(attackDamage);
+            ScreenShakeManager.Instance.ScreenShake(20f,true,0.2f,true,0.5f);
+        }
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
