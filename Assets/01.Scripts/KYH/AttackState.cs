@@ -27,7 +27,7 @@ public class AttackState : State
         base.StateUpdate();
         if(_player.isAttack)
         {
-            _player.RigidCompo.velocity = mouseDirect * attackSpeed;
+            _player.RigidCompo.velocity = mouseDirect.normalized * attackSpeed;
             attackSpeed += Time.deltaTime * 3f;
         }
     }

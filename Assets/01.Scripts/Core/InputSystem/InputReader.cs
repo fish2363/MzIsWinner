@@ -9,6 +9,7 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
 {
     public event Action<Vector2> OnMoveEvent;
     public event Action OnAttackEvent;
+    public event Action OnDashEvent;
     public event Action<bool> OnAttackingEvent;
     public Vector2 moveDir { get; private set; }
 
@@ -43,6 +44,14 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
         {
             OnAttackEvent?.Invoke();
             OnAttackingEvent?.Invoke(false);
+        }
+    }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            OnDashEvent?.Invoke();
         }
     }
 }

@@ -7,7 +7,8 @@ public enum StateEnum
 {
     Idle,
     Move,
-    Attack
+    Attack,
+    Dash
 }
 
 public enum AnimationType
@@ -43,7 +44,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float attackDelay;
 
-    private AttackPoint attackPoint;
+    [HideInInspector]
+    public AttackPoint attackPoint;
 
     public Vector2 mouseDir { get; private set; }
 
