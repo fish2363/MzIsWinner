@@ -17,15 +17,13 @@ public class Frog : MonoBehaviour
     [SerializeField] float attackPlusJumpCool;
     float JumpCoolTime;
     bool canJump;
+    bool isRest;
     FrogJump jump;
 
-    [SerializeField]
-    private Transform groundChecker;
+    public BoxCollider2D frogFeet;
 
     FrogTongue tongue;
-    private LayerMask whatIsGround;
-    [SerializeField]
-    private Vector2 checkerSize;
+
 
     private void Awake()
     {
@@ -39,30 +37,33 @@ public class Frog : MonoBehaviour
     }
     private void Update()
     {
-        if (!canAttack && !isTongueAttack)
+        if(!isRest)
         {
-            _timer += Time.deltaTime;
-            if(_timer > attackCoolTime)
+            if (!canAttack && !isTongueAttack)
             {
-                canAttack = true;
-                _timer = 0;
+                _timer += Time.deltaTime;
+                if (_timer > attackCoolTime)
+                {
+                    canAttack = true;
+                    _timer = 0;
+                }
             }
-        }
-        if(!canJump)
-        {
-            JumpCoolTime -= Time.deltaTime;
-            if(JumpCoolTime < 0)
+            if (!canJump)
             {
-                canJump = true;
+                JumpCoolTime -= Time.deltaTime;
+                if (JumpCoolTime < 0)
+                {
+                    canJump = true;
+                }
             }
-        }
-        if (canAttack && canJump)
-        {
-            Attack();
-        }
-        else if (canAttack)
-        {
-            NoJumpAttack();
+            if (canAttack && canJump)
+            {
+                Attack();
+            }
+            else if (canAttack)
+            {
+                NoJumpAttack();
+            }
         }
     }
 
@@ -108,6 +109,7 @@ public class Frog : MonoBehaviour
 
     private void Rest()
     {
+        isRest = true;
         AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogRest");
         StartCoroutine(Wait());
     }
@@ -115,10 +117,13 @@ public class Frog : MonoBehaviour
     private IEnumerator Wait()
     {
         yield return new WaitForSeconds(2.3f);
+        isRest = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (isRest) return;
         AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogIdle");
+        frogFeet.enabled = false;
     }
 }
