@@ -28,13 +28,13 @@ public class DashState : State
 
         dashTime += Time.deltaTime;
         _player.isUndead = true;
-        _player.AnimatorCompo.gameObject.GetComponent<SpriteRenderer>().DOFade(0.3f, 0.5f);
+        _player.SpriteCompo.DOFade(0.3f, 0.2f);
         _player.RigidCompo.velocity = mouseDirect.normalized * _player.DashPower;
 
         if (dashTime >= maxaDashTime)
         {
             dashTime = 0;
-            _player.AnimatorCompo.gameObject.GetComponent<SpriteRenderer>().DOFade(1f, 1);
+            _player.SpriteCompo.DOFade(1f, 0.2f);
             _player.isUndead = false;
             _player.ChangeState(StateEnum.Idle);
         }

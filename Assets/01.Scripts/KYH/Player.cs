@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour,IDamage
     [SerializeField]
     private Animator[] animators;
     public Animator AnimatorCompo { get; private set; }
-
+    public SpriteRenderer SpriteCompo { get; private set; }
 
     private Dictionary<StateEnum, State> stateDictionary = new Dictionary<StateEnum, State>();
     private StateEnum currentEnum;
@@ -89,11 +90,12 @@ public class Player : MonoBehaviour,IDamage
 
     private void Start()
     {
+        AnimatorCompo = animators[currentChracter.beeIdx];
+        AnimatorCompo.gameObject.SetActive(true);
+        SpriteCompo = AnimatorCompo.GetComponent<SpriteRenderer>();
         moveSpeed = currentChracter.moveSpeed;
         MaxHp = currentChracter.maxHp;
         CurrentHp= MaxHp;
-        AnimatorCompo = animators[currentChracter.beeIdx];
-        AnimatorCompo.gameObject.SetActive(true);
         ChangeState(StateEnum.Idle);
     }
 
@@ -176,6 +178,8 @@ public class Player : MonoBehaviour,IDamage
         if(!isUndead)
         {
             CurrentHp -= damage;
+            SpriteCompo.DOColor(Color.red, 0.1f);
+            SpriteCompo.DOColor(Color.white, 0.1f).SetDelay(0.5f);
             if (CurrentHp == 0)
                 Death();
         }
