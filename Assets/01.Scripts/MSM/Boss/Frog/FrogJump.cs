@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class FrogJump : MonoBehaviour
 {
-    [SerializeField] private Transform targetPoint; // 목표 위치
-    [SerializeField] private float firingAngle = 45.0f; // 발사 각도
-    [SerializeField] private float speed = 5f; // 속도
+    private Transform targetPoint; // 목표 위치
+    [SerializeField] private float firingAngle = 45.0f;
+    [SerializeField] private float speed = 5f;
     private float gravity;
     private Rigidbody2D rb;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponentInParent<Rigidbody2D>();
     }
-
+    public void TargetSet(Transform target)
+    {
+        targetPoint = target;
+    }
     private void Start()
     {
         gravity = rb.gravityScale;
@@ -26,10 +29,10 @@ public class FrogJump : MonoBehaviour
     }
     private IEnumerator SimulateProjectile()
     {
-        rb.gravityScale = 0;  // 중력 비활성화
+        rb.gravityScale = 0;
 
         // 목표와 현재 위치 간의 거리 계산
-        float target_Distance = Vector2.Distance(transform.position, targetPoint.position);
+        float target_Distance = Vector2.Distance(transform.parent.position, targetPoint.position);
 
         
 
@@ -38,7 +41,7 @@ public class FrogJump : MonoBehaviour
 
         // 수평 속도(Vx)와 수직 속도(Vy) 계산
         float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad) * speed;
-        float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad) * (speed / 1.5f);
+        float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad) * (speed / 1.65f);
         if (target_Distance < 10f)
         {
             Vy *= 2f;
@@ -47,7 +50,7 @@ public class FrogJump : MonoBehaviour
         float flightDuration = target_Distance / Vx;
 
         // 목표 지점으로 향하는 방향 계산
-        Vector2 direction = (targetPoint.position - transform.position).normalized;
+        Vector2 direction = (targetPoint.position - transform.parent.position).normalized;
 
         // 비행 시간 동안 이동
         float elapse_time = 0;
@@ -58,12 +61,12 @@ public class FrogJump : MonoBehaviour
             float yMovement = (Vy - (gravity * elapse_time)) * Time.deltaTime;
 
             // 이동
-            transform.Translate(xMovement, yMovement, 0);
+            transform.parent.Translate(xMovement, yMovement, 0);
 
             elapse_time += Time.deltaTime;
             yield return null;
         }
 
-        rb.gravityScale = gravity * Vector2.Distance(targetPoint.position , transform.position);
+        rb.gravityScale = gravity * Vector2.Distance(targetPoint.position , transform.parent.position);
     }
 }
