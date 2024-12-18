@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: StrongBee
   m_EditorClassIdentifier: 
   maxHp: 3
-  moveSpeed: 5
+  moveSpeed: 8
   character: 1
   beeIdx: 1

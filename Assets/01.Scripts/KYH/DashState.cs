@@ -20,23 +20,35 @@ public class DashState : State
         print("´ë½¬");
         _player.RigidCompo.velocity = Vector2.zero;
         mouseDirect = _player.inputReader.direction;
+
+        if(_player.currentChracter.beeIdx == 1)
+        {
+            _player.isStopMove = true;
+            _player.bohoRenderer.DOFade(0.5f, 0.2f);
+            _player.isUndead = true;
+            _player.Shield();
+        }
     }
+
+    
 
     public override void StateUpdate()
     {
         base.StateUpdate();
-
-        dashTime += Time.deltaTime;
-        _player.isUndead = true;
-        _player.SpriteCompo.DOFade(0.3f, 0.2f);
-        _player.RigidCompo.velocity = mouseDirect.normalized * _player.DashPower;
-
-        if (dashTime >= maxaDashTime)
+        if(_player.currentChracter.beeIdx == 0)
         {
-            dashTime = 0;
-            _player.SpriteCompo.DOFade(1f, 0.2f);
-            _player.isUndead = false;
-            _player.ChangeState(StateEnum.Idle);
+            dashTime += Time.deltaTime;
+            _player.isUndead = true;
+            _player.SpriteCompo.DOFade(0.3f, 0.2f);
+            _player.RigidCompo.velocity = mouseDirect.normalized * _player.DashPower;
+
+            if (dashTime >= maxaDashTime)
+            {
+                dashTime = 0;
+                _player.SpriteCompo.DOFade(1f, 0.2f);
+                _player.isUndead = false;
+                _player.ChangeState(StateEnum.Idle);
+            }
         }
     }
 }
