@@ -28,6 +28,7 @@ public class FrogJump : MonoBehaviour
 
     public void Attack()
     {
+        frog.frogFeet.enabled = true;
         AnimationPlayer.Instance.PlayAnimaiton(frog.frogAnimator, "FrogJump");
         StartCoroutine(SimulateProjectile());
     }
