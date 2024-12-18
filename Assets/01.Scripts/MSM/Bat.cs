@@ -34,26 +34,27 @@ public class Bat : MonoBehaviour
     {
         if (isFind)
             _timer -= Time.deltaTime;
-        Collider2D hit = Physics2D.OverlapCircle(transform.position, checkerRadius, player);
-        if(hit != null)
+        if (!isFind)
         {
-            eyeSprite.DOFade(1,0.2f);
-            StartCoroutine(WaitRoutine(hit));
+            Collider2D hit = Physics2D.OverlapCircle(transform.position, checkerRadius, player);
+            if (hit != null)
+            {
+                eyeSprite.DOFade(1, 0.2f);
+                StartCoroutine(WaitRoutine());
+                targetTrans = hit.transform;
+            }
         }
     }
 
-    private IEnumerator WaitRoutine(Collider2D hit)
+    private IEnumerator WaitRoutine()
     {
-        if(!isFind)
-        {
-            yield return new WaitForSeconds(1f);
-            AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAppear");
-            animator.GetComponent<SpriteRenderer>().DOFade(1, 1);
-            yield return new WaitForSeconds(1f);
-            eyeSprite.gameObject.SetActive(false);
-            isFind = true;
-            targetTrans = hit.transform;
-        }
+        yield return new WaitForSeconds(1f);
+        print("BatAppear");
+        AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAppear");
+        animator.GetComponent<SpriteRenderer>().DOFade(1, 1);
+        yield return new WaitForSeconds(1f);
+        eyeSprite.gameObject.SetActive(false);
+        isFind = true;
     }
 
     private void FixedUpdate()
@@ -71,10 +72,12 @@ public class Bat : MonoBehaviour
             }
             else if (once)
             {
+                StopCoroutine(WaitRoutine());
                 _time += Time.deltaTime;
                 float X = Mathf.Sin(_time * speed) * distance.x;
                 moveDir = new Vector3(X/2f, distance.y, 0f);
                 transform.DOMove(targetTrans.position + moveDir,1f);
+                print("BatFlying");
                 AnimationPlayer.Instance.PlayAnimaiton(animator,"BatFlying");
                 //transform.position = targetTrans.position + moveDir;
             }
