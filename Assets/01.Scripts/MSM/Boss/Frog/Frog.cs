@@ -68,7 +68,7 @@ public class Frog : MonoBehaviour
                 spit.Attack();
                 break;
             case 1:
-                //tongue.Attack();
+                tongue.Attack();
                 break;
             default:
                 break;
