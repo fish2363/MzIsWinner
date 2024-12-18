@@ -29,7 +29,7 @@ public class Bullet : MonoBehaviour
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, targetAngle);
 
-        rigid.velocity = direction.normalized * 30f;
+        rigid.velocity = direction.normalized * 20f;
     }
 
     private IEnumerator Disappear()
