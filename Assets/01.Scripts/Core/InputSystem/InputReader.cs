@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[CreateAssetMenu(menuName = "SO/InputReader")]
 public class InputReader : ScriptableObject, KeyAction.IPlayerActions
 {
     public event Action<Vector2> OnMoveEvent;
+    public event Action OnAttackEvent;
     public Vector2 moveDir { get; private set; }
     public Vector2 mouseDir { get; private set; }
 
@@ -25,6 +27,7 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
     public void OnMove(InputAction.CallbackContext context)
     {
         moveDir = context.ReadValue<Vector2>();
+        moveDir.Normalize();
         OnMoveEvent?.Invoke(moveDir);
     }
 
@@ -34,5 +37,11 @@ public class InputReader : ScriptableObject, KeyAction.IPlayerActions
         return mouseDir;
     }
 
-
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            OnAttackEvent?.Invoke();
+        }
+    }
 }
