@@ -24,7 +24,7 @@ public class Spider : MonoBehaviour
     }
     private IEnumerator Attack()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 4);
         switch (rand)
         {
             case 0:
@@ -32,13 +32,20 @@ public class Spider : MonoBehaviour
                 break;
             case 1:
                 spiderSpit.Attack();
+                AnimationPlayer.Instance.PlayAnimaiton(anim,"SpiderSpit");
+                yield return new WaitForSeconds(0.3f);
                 break;
             case 2:
                 spiderBall.Attack();
+                AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderSpit");
+                yield return new WaitForSeconds(0.3f);
                 break;
             default:
+                //취약상태
+                yield return new WaitForSeconds(Random.Range(1.0f,2.1f));
                 break;
         }
+        AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderIdle");
         yield return new WaitForSeconds(coolTime);
         StartCoroutine(Attack());
     }

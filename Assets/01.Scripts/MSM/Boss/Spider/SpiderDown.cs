@@ -15,7 +15,7 @@ public class SpiderDown : MonoBehaviour
     [SerializeField] float timeRandMin;
     [SerializeField] float timeRandMax;
     [SerializeField] float SpiderSpeed;
-    Animator animator;
+    Animator anim;
     Rigidbody2D rb;
     private Transform target;
     private void Awake()
@@ -32,7 +32,7 @@ public class SpiderDown : MonoBehaviour
     }
     public void SetAnimator(Animator animatorSetting)
     {
-        animator = animatorSetting;
+        anim = animatorSetting;
     }
     public IEnumerator Attack()
     {
@@ -60,6 +60,7 @@ public class SpiderDown : MonoBehaviour
         transform.parent.position = new Vector3(transform.parent.position.x, upY);
 
 
+        AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderAttack");
         while (transform.parent.position.y > downY)
         {
             rb.velocity = new Vector3(0, downY - transform.parent.position.y, 0).normalized * SpiderSpeed * 5;

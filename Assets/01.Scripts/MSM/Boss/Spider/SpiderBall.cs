@@ -10,6 +10,6 @@ public class SpiderBall : MonoBehaviour
     [SerializeField] Transform BallTrans;
     public void Attack()
     {
-        GameObject spit = Instantiate(ballPrefab , BallTrans.position , new Quaternion(0,0,Random.Range(-85.0f,85.1f), transform.rotation.w));
+        GameObject spit = Instantiate(ballPrefab , BallTrans.position , new Quaternion(0,0,Random.Range(0.0f,360.1f), transform.rotation.w));
     }
 }
