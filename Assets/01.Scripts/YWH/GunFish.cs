@@ -6,13 +6,14 @@ public class GunFish : MonoBehaviour
 {
     public Transform player;
     public float moveDistance = 5f;
-    public float moveSpeed = 3f;
+    public float moveSpeed = 6f;
     public float randomOffset = 2f;
     public float popOutY = -1.96f;
     public float hideY = -3.65f;
     public float popOutDuration = 0.5f;
-    public float fadeDuration = 0.5f;
+    public float fadeDuration = 0.3f;
     public float shootDelay = 1f;
+    public float detectionRange = 10f;
 
     private SpriteRenderer spriteRenderer;
     public GameObject shootPrefab;
@@ -27,9 +28,17 @@ public class GunFish : MonoBehaviour
     {
         while (true)
         {
-            yield return PopOut();
-            yield return MoveAndShoot();
-            yield return Hide();
+            
+            if (Vector3.Distance(transform.position, player.position) <= detectionRange)
+            {
+                yield return PopOut();
+                yield return MoveAndShoot();
+                yield return Hide();
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.5f); 
+            }
         }
     }
 
@@ -49,26 +58,43 @@ public class GunFish : MonoBehaviour
 
     private IEnumerator MoveAndShoot()
     {
+        spriteRenderer.DOFade(0f, fadeDuration);
+        yield return new WaitForSeconds(fadeDuration);
+
         float randomXOffset = Random.Range(-randomOffset, randomOffset);
         Vector3 targetPosition = new Vector3(player.position.x + randomXOffset, transform.position.y, transform.position.z);
 
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
             RotateTowardsPlayer();
+
             yield return null;
         }
 
+        spriteRenderer.DOFade(1f, fadeDuration);
+        yield return new WaitForSeconds(fadeDuration);
+        RotateTowardsPlayer();
         yield return ShootAtPlayer();
-        yield return Hide();
     }
 
     private void RotateTowardsPlayer()
     {
+        // 플레이어 방향 계산
         Vector3 direction = player.position - transform.position;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, targetAngle), 360f * Time.deltaTime);
+
+        targetAngle = Mathf.Clamp(targetAngle, 50f, 140f);
+
+        transform.rotation = Quaternion.RotateTowards(
+            transform.rotation,
+            Quaternion.Euler(0, 0, targetAngle),
+            360f * Time.deltaTime
+        );
     }
+
+
 
     private IEnumerator ShootAtPlayer()
     {
@@ -86,10 +112,8 @@ public class GunFish : MonoBehaviour
         Vector3 direction = player.position - prefab.transform.position;
         float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-
         prefab.transform.rotation = Quaternion.Euler(0, 0, targetAngle);
 
         yield return new WaitForSeconds(shootDelay);
     }
-
 }
