@@ -23,6 +23,7 @@ public class AnimationPlayer : MonoSingleton<AnimationPlayer>
 
     private void Play(string name)
     {
+        PlayerAnimator.StopPlayback();
         PlayerAnimator.Play(name);
     }
 

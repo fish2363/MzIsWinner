@@ -24,8 +24,8 @@ public class Frog : MonoBehaviour
 
     FrogTongue tongue;
     private LayerMask whatIsGround;
+    [SerializeField]
     private Vector2 checkerSize;
-    private bool isGround;
 
     private void Awake()
     {
@@ -39,11 +39,6 @@ public class Frog : MonoBehaviour
     }
     private void Update()
     {
-        Collider2D hit = Physics2D.OverlapBox(transform.position, checkerSize, whatIsGround);
-        if (hit != null)
-        {
-            AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogMouseOpen");
-        }
         if (!canAttack && !isTongueAttack)
         {
             _timer += Time.deltaTime;
@@ -73,7 +68,7 @@ public class Frog : MonoBehaviour
 
     private void NoJumpAttack()
     {
-        int rand = Random.Range(0, 2);
+        int rand = Random.Range(0, 3);
         switch (rand)
         {
             case 0:
@@ -82,6 +77,9 @@ public class Frog : MonoBehaviour
             case 1:
                 tongue.Attack();
                 isTongueAttack = true;
+                break;
+            case 2:
+                Rest();
                 break;
             default:
                 break;
@@ -108,10 +106,19 @@ public class Frog : MonoBehaviour
         canAttack = false;
     }
 
-    private void OnDrawGizmos()
+    private void Rest()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawCube(transform.position, checkerSize);
-        Gizmos.color = Color.white;
+        AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogRest");
+        StartCoroutine(Wait());
+    }
+
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2.3f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogIdle");
     }
 }

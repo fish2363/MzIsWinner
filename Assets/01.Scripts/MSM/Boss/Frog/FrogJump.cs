@@ -72,5 +72,6 @@ public class FrogJump : MonoBehaviour
         }
 
         rb.gravityScale = gravity * Vector2.Distance(targetPoint.position , transform.parent.position);
+        AnimationPlayer.Instance.PlayAnimaiton(frog.frogAnimator, "FrogJumpDown");
     }
 }
