@@ -14,6 +14,9 @@ public class BearScratch : MonoBehaviour
     Rigidbody2D rb;
     Transform target;
     [SerializeField] float BearSpeed;
+    [SerializeField]
+    private int attackDamage;
+
     private void Awake()
     {
         y = Y.position.y;
@@ -49,5 +52,15 @@ public class BearScratch : MonoBehaviour
             transform.position = new Vector3(transform.position.x, downY);
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        IDamage damage = other.GetComponent<IDamage>();
+
+        if (damage != null)
+        {
+            damage.Damage(attackDamage);
+        }
     }
 }

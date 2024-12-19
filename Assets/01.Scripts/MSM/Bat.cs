@@ -33,6 +33,12 @@ public class Bat : MonoBehaviour
         _timer = Random.Range(_timerMin, _timerMax);
         light = GetComponentInChildren<Light2D>();
     }
+
+    private void Start()
+    {
+        targetTrans = FindAnyObjectByType<Player>().transform;
+    }
+
     private void Update()
     {
         if (isFind)

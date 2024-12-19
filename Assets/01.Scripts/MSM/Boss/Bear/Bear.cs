@@ -16,6 +16,7 @@ public class Bear : MonoBehaviour
     }
     private void Start()
     {
+        targetTrans = FindAnyObjectByType<Player>().transform;
         stamp.SetTarget(targetTrans);
         scratch.TargetSet(targetTrans);
         StartCoroutine(BearHead());

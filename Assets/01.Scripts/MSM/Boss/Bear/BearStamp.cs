@@ -16,6 +16,10 @@ public class BearStamp : MonoBehaviour
     [SerializeField] float BearSpeed;
     Rigidbody2D rb;
     private Transform target;
+
+    [SerializeField]
+    private int attackDamage;
+
     private void Awake()
     {
         y = Y.position.y;
@@ -79,5 +83,14 @@ public class BearStamp : MonoBehaviour
         rb.velocity = Vector3.zero;
         transform.position = new Vector3(transform.position.x, upY + 3);
 
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        IDamage damage = other.GetComponent<IDamage>();
+
+        if (damage != null)
+        {
+            damage.Damage(attackDamage);
+        }
     }
 }
