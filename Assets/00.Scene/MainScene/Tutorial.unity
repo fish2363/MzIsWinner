@@ -1312,6 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 1565821791}
+  particleSystem: {fileID: 0}
 --- !u!1001 &941810687
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2519,6 +2520,22 @@ PrefabInstance:
     - target: {fileID: 1601329377025547426, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850598330896622838, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850598330896622838, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850598330896622838, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228829482337943922, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
+      propertyPath: m_SortingOrder
+      value: 32767
       objectReference: {fileID: 0}
     - target: {fileID: 4932424770891680791, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
       propertyPath: m_Pivot.x

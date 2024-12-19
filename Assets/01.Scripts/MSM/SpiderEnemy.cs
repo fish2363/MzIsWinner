@@ -28,7 +28,7 @@ public class SpiderEnemy : MonoBehaviour
         {
             PlayerTrans = collider.transform;
             _timer -= Time.deltaTime;
-            if(_timer <= 0 && MaxTrans.position.y + 0.6f > PlayerTrans.position.y && MinTrans.position.y - 0.6f >= PlayerTrans.position.y)
+            if(_timer <= 0 && MaxTrans.position.y + 0.6f > PlayerTrans.position.y && MinTrans.position.y - 0.6f < PlayerTrans.position.y)
             {
                 _timer = AttackTime;
                 Transform bullet = Instantiate(BulletPrefab , transform.position , Quaternion.identity).transform;
