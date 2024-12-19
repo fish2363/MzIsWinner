@@ -60,6 +60,7 @@ public class SpiderDown : MonoBehaviour
             rb.velocity = new Vector3(0, downY - transform.parent.parent.position.y, 0).normalized * SpiderSpeed * 5;
             yield return null;
         }
+        SoundManager.Instance.ChangeMainStageVolume("SpiderAttack", true, ISOund.SFX);
         transform.parent.parent.position = new Vector3(transform.parent.parent.position.x, downY);
 
         while (transform.parent.parent.position.y < y)
