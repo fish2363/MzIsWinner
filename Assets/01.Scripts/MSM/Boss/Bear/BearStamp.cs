@@ -78,6 +78,7 @@ public class BearStamp : MonoBehaviour
         transform.position = new Vector3(transform.position.x, downY);
         //dsdas
         stampParticle.Play();
+        SoundManager.Instance.ChangeMainStageVolume("Stamp", true, ISOund.SFX);
 
 
         while (transform.position.y < upY + 3)

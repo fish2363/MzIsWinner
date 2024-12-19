@@ -58,6 +58,8 @@ public class FrogTongue : MonoBehaviour
             {
                 isTongue = false;
                 AnimationPlayer.Instance.PlayAnimaiton(tongueAnim, "Tongue");
+                tongue.GetComponentInChildren<ParticleSystem>().Play();
+                SoundManager.Instance.ChangeMainStageVolume("tongue", true, ISOund.SFX);
                 tongueWarning.DOFade(0f, 1f);
                 StartCoroutine(Routine());
             }
