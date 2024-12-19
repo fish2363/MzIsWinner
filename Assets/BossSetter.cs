@@ -25,7 +25,10 @@ public class BossSetter : MonoBehaviour
         cinemachine.Follow = playerScript.transform;
         playerScript.isStopMove = true;
     }
-
+    public void CameraShake()
+    {
+        ScreenShakeManager.Instance.ScreenShake();
+    }
     public void StartBoss()
     {
         playerScript.isStopMove = false;
