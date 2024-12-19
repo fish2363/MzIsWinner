@@ -45,7 +45,6 @@ public static class TextExpand
 
             for (int i = 0; i < vertices.Length; ++i)
             {
-                Debug.Log(vertices[i]);
                 if (textStyle.HasStyle(TextStyle.Moving))
                 {
                     float amount = textStyle.HasStyle(TextStyle.UI) ? 5f : 0.5f;
