@@ -13,6 +13,12 @@ public class Setting : MonoBehaviour
     {
         setting.SetActive(false);
     }
+    private void Start()
+    {
+        VolumeSet("Master");
+        VolumeSet("SFX");
+        VolumeSet("BackGround");
+    }
     private void Update()
     {
         if(Keyboard.current.escapeKey.wasPressedThisFrame)
@@ -21,18 +27,20 @@ public class Setting : MonoBehaviour
             setting.SetActive(setting.activeInHierarchy == false);
         }
     }
-    public void MasterVolume(float newVolume)
+    public void VolumeSet(string name = "Master" , float newVolume = 1)
     {
-        audioMixer.SetFloat("Master",Mathf.Clamp01(newVolume));
+        audioMixer.SetFloat(name, Mathf.Clamp01(newVolume));
     }
-    //public void SetVolume(float newVolume)
-    //{
-    //    volume = Mathf.Clamp01(newVolume);
-    //    _audioSource.volume = volume; // AudioSource º¼·ý ¹Ý¿µ
-    //}
-
-    //public void SetBgmVolume(float newBgmVolume)
-    //{
-    //    bgmVolume = Mathf.Clamp01(newBgmVolume);
-    //}
+    public void MasterSet(float newVolume)
+    {
+        VolumeSet("Master" , newVolume);
+    }
+    public void SFXSet(float newVolume)
+    {
+        VolumeSet("SFX", newVolume);
+    }
+    public void BackGroundSet(float newVolume)
+    {
+        VolumeSet("BackGround", newVolume);
+    }
 }
