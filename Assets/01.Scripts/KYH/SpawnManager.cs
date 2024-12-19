@@ -70,6 +70,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         cutScene.SetActive(true);
         spawningBee.sprite = characterList.characters[idx].frontImage;
+        skillUI.gameObject.SetActive(true);
         skillUI.sprite = characterList.characters[idx].skillImage;
         currentChracter = characterList.characters[idx];
         yield return new WaitForSeconds(4f);

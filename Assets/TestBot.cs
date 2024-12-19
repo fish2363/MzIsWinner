@@ -12,6 +12,11 @@ public class TestBot : MonoBehaviour
         player.OnnAttack += DDASDA;
 
     }
+
+    private void Start()
+    {
+        player.CurrentHp = 100;
+    }
     public void DDASDA()
     {
         StartCoroutine(DS());
