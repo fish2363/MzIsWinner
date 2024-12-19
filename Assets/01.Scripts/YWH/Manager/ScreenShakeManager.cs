@@ -12,7 +12,8 @@ public class ScreenShakeManager : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin noise;
     private CinemachineConfiner2D confiner;
     
-    private CanvasGroup vignette;
+    [SerializeField] private CanvasGroup vignette;
+    [SerializeField] private CanvasGroup deadVignette;
     [SerializeField] private GameObject particleSystem;
 
     private bool isFalling;
@@ -103,6 +104,12 @@ public class ScreenShakeManager : MonoBehaviour
 
 
     }
+    public void Die()
+    {
+        deadVignette.DOFade(1, 1);
+    }
+
+
 
 
 
