@@ -669,6 +669,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Frog
       objectReference: {fileID: 0}
+    - target: {fileID: 7509725721192280602, guid: dc0b185836c000f4f94c8b8fa76f3ca0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774985290749330035, guid: dc0b185836c000f4f94c8b8fa76f3ca0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9343628
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774985290749330035, guid: dc0b185836c000f4f94c8b8fa76f3ca0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774985290749330035, guid: dc0b185836c000f4f94c8b8fa76f3ca0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774985290749330035, guid: dc0b185836c000f4f94c8b8fa76f3ca0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.35632315
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774985290749330035, guid: dc0b185836c000f4f94c8b8fa76f3ca0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -41.749
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -735,10 +759,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9133887081238451769, guid: 6b19f084696ca0348b18b7388ff5df1a, type: 3}
-      propertyPath: targetTrans
-      value: 
-      objectReference: {fileID: 6637514941803055143}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
