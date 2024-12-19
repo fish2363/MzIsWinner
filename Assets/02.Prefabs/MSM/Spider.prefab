@@ -48,7 +48,7 @@ MonoBehaviour:
   spitPrefab: {fileID: 855065059768535145, guid: 2d5f48a38514b1e409c897d909eae6ae, type: 3}
   spitTrans: {fileID: 6391004497094651375}
   distance: 1
-  spitMany: 12
+  spitMany: 36
 --- !u!114 &8310035141939954261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,68 +63,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 5229313731989811957, guid: 50fe34bb33c6ee847a98fea988a76666, type: 3}
   BallTrans: {fileID: 6391004497094651375}
---- !u!1 &3083276605244470920
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9158967522378923042}
-  m_Layer: 0
-  m_Name: DownY
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9158967522378923042
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3083276605244470920}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3933064240496740596}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3699220330754123347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6927120059713491861}
-  m_Layer: 0
-  m_Name: UpY
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6927120059713491861
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3699220330754123347}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3933064240496740596}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3814315319192835783
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +119,8 @@ MonoBehaviour:
   anim: {fileID: 236330764351143960}
   Weakness: {fileID: 7267210548069969746}
   weaknessTime: 4
+  AttackDown: -1.23
+  speed: 4
 --- !u!50 &7335893482109821431
 Rigidbody2D:
   serializedVersion: 4
@@ -302,39 +242,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   checkerRadius: 0.6
+  particle: {fileID: 0}
   isRest: 0
   aimTarget: {fileID: 8461952215949132273}
---- !u!1 &5110292041003640899
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5310089755711285311}
-  m_Layer: 0
-  m_Name: Y
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5310089755711285311
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5110292041003640899}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3933064240496740596}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5683973261525630867
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,9 +405,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6020516645615355728}
-  - {fileID: 5310089755711285311}
-  - {fileID: 6927120059713491861}
-  - {fileID: 9158967522378923042}
   m_Father: {fileID: 2608738886203324280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7640672065424370531
@@ -851,9 +758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b0881c1a25237f48b7855b631c2788e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Y: {fileID: 5310089755711285311}
-  UpY: {fileID: 6927120059713491861}
-  DownY: {fileID: 9158967522378923042}
+  upY: 4.5
+  downY: -2.77
+  y: 2.64
   timeRandMin: 2
   timeRandMax: 3
   SpiderSpeed: 4
