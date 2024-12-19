@@ -222,7 +222,7 @@ public class Player : MonoBehaviour,IDamage
     public void Death()
     {
         ChangeState(StateEnum.Death);
-        
+        ScreenShakeManager.Instance.SuccessAttack();
         //공격 잘못 박거나 체력 0
     }
 
