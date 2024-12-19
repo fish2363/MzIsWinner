@@ -34,7 +34,7 @@ public class Player : MonoBehaviour,IDamage
     public float moveSpeed;
 
     public Rigidbody2D RigidCompo { get; private set; }
-
+    public Action OnnAttack;
 
     [SerializeField]
     private Animator[] animators;
@@ -72,6 +72,8 @@ public class Player : MonoBehaviour,IDamage
 
     public ParticleSystem shieldParticle;
     public ParticleSystem healingParticle;
+    public bool isSkillLock;
+    public bool isAttackLock;
 
     private void Awake()
     {
@@ -103,17 +105,23 @@ public class Player : MonoBehaviour,IDamage
 
     private void HandleDashEvent()
     {
-        if (isAttack) return;
+        if(!isSkillLock)
+        {
+            if (isAttack) return;
 
-        ChangeState(StateEnum.Dash);
+            ChangeState(StateEnum.Dash);
+        }
     }
 
     private void HandleAttackingEvent(bool isOnoff)
     {
-        if (isOnoff)
-            attackPoint.FadeInAttackPoint();
-        else
-            attackPoint.FadeOutAttackPoint();
+        if(!isAttackLock)
+        {
+            if (isOnoff)
+                attackPoint.FadeInAttackPoint();
+            else
+                attackPoint.FadeOutAttackPoint();
+        }
     }
 
     private void Update()
@@ -159,10 +167,14 @@ public class Player : MonoBehaviour,IDamage
 
     private void HandleAttackEvent()
     {
-        if (!isStopMove)
+        if (!isAttackLock)
         {
-            ChangeState(StateEnum.Attack);
-            isStopMove = true;
+            if (!isStopMove)
+            {
+                OnnAttack?.Invoke();
+                ChangeState(StateEnum.Attack);
+                isStopMove = true;
+            }
         }
     }
 

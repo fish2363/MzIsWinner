@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     string stageNum;
 
     public SpawnManager spawnManager;
+    public bool isTitorialEnd;
 
     private void Awake()
     {
@@ -31,11 +32,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
-        LoadScene();
     }
 
     
