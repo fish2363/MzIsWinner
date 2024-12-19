@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using System;
 
 public class SpawnManager : MonoSingleton<SpawnManager>
 {
@@ -14,6 +15,8 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     private GameObject player;
     [SerializeField]
     private Transform spawnPoint;
+
+    public Action OnSpawn;
 
     [SerializeField]
     private CinemachineVirtualCamera cinemachine;
@@ -28,7 +31,8 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     int idx;
 
-    private void Awake()
+
+    public void Gamestart()
     {
         cinemachine = FindAnyObjectByType<CinemachineVirtualCamera>();
         ReStart();
@@ -39,7 +43,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         if (currentPlayer != null)
             Destroy(currentPlayer);
         
-        idx = Random.Range(0,characterList.characters.Count);
+        idx = UnityEngine.Random.Range(0,characterList.characters.Count);
         StartCoroutine(CutScene());
         print(idx);
         
@@ -58,5 +62,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         Player playerScript = currentPlayer.GetComponent<Player>();
         playerScript.currentChracter = characterList.characters[idx];
         cinemachine.Follow = playerScript.transform;
+        OnSpawn?.Invoke();
     }
 }

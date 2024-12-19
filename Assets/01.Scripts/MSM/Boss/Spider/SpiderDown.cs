@@ -71,4 +71,6 @@ public class SpiderDown : MonoBehaviour
         transform.parent.parent.position = new Vector3(0,y);
 
     }
+
+
 }

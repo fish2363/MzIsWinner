@@ -17,7 +17,7 @@ public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
             if (_instance == null)
             {
                 _instance = GameObject.FindObjectOfType<T>();
-
+                DontDestroyOnLoad(_instance);
                 if (_instance == null)
                     Debug.LogError($"{typeof(T).Name} singleton is not exist");
                 else

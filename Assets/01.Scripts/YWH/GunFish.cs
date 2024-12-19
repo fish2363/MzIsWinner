@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GunFish : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float moveDistance = 5f;
     public float moveSpeed = 6f;
     public float randomOffset = 2f;
@@ -18,8 +18,13 @@ public class GunFish : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public GameObject shootPrefab;
 
-    private void Start()
+    private void Awake()
     {
+        SpawnManager.Instance.OnSpawn += FindPlayer;
+    }
+    public void FindPlayer()
+    {
+        player = FindAnyObjectByType<Player>().transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(FishBehaviorLoop());
     }
@@ -115,5 +120,10 @@ public class GunFish : MonoBehaviour
         prefab.transform.rotation = Quaternion.Euler(0, 0, targetAngle);
 
         yield return new WaitForSeconds(shootDelay);
+    }
+
+    private void OnDisable()
+    {
+        SpawnManager.Instance.OnSpawn -= FindPlayer;
     }
 }
