@@ -9,8 +9,9 @@ public enum ISOund
     SFX
 }
 
-public class SoundManager : MonoSingleton<SoundManager>
+public class SoundManager : MonoBehaviour
 {
+    public static SoundManager Instance;
 
     [Header("--------------BackGroundAudio--------------")]
     [SerializeField] AudioClip[] music;
@@ -28,6 +29,16 @@ public class SoundManager : MonoSingleton<SoundManager>
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         foreach (AudioClip audioClip in music)
         {
             audioDic.Add(audioClip.name, audioClip);

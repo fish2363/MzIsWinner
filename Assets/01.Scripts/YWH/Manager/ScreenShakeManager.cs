@@ -62,6 +62,7 @@ public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
     public void AttackEffect()
     {
         ScreenShake(5, true, 0.2f, true, 1.5f);
+        if(particleSystem != null)
         particleSystem.gameObject.SetActive(true);
 
         var transposer = virtualCamera.GetCinemachineComponent<Cinemachine.CinemachineTransposer>();
