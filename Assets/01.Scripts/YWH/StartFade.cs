@@ -16,5 +16,6 @@ public class StartFade : MonoBehaviour
     {
         fade.DOFade(0, 1f);
         fade.raycastTarget = false;
+        fade.DOFade(0, 1f).SetDelay(2);
     }
 }
