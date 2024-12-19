@@ -162,6 +162,7 @@ public class Frog : MonoBehaviour,IBoss
         ScreenShakeManager.Instance.ScreenShake(0f, true, 100, true, 1f);
         yield return new WaitForSeconds(5f);
         Time.timeScale = 1f;
+        print("개구리 디짐");
         GameManager.Instance.NextStage();
     }
 }

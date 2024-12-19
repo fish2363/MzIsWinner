@@ -119,6 +119,11 @@ public class GameManager : MonoBehaviour
                 //보스 곰
                 SceneManager.LoadScene("River");
                 stage--;
+                string paAth = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
+                print(paAth);
+                var wriWWter = new StreamWriter(File.Open(paAth, FileMode.OpenOrCreate));
+                wriWWter.WriteLine($"{stage}");
+                wriWWter.Close();
                 break;
             case 3:
                 SceneManager.LoadScene("Forest");
@@ -128,6 +133,11 @@ public class GameManager : MonoBehaviour
             case 4:
                 SceneManager.LoadScene("Forest");
                 stage--;
+                string pSSath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
+                print(pSSath);
+                var wrSiter = new StreamWriter(File.Open(pSSath, FileMode.OpenOrCreate));
+                wrSiter.WriteLine($"{stage}");
+                wrSiter.Close();
                 //보스 개구리
                 break;
             case 5:
@@ -138,6 +148,11 @@ public class GameManager : MonoBehaviour
             case 6:
                 SceneManager.LoadScene("Cave");
                 stage--;
+                string pX = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
+                print(pX);
+                var wrSiSter = new StreamWriter(File.Open(pX, FileMode.OpenOrCreate));
+                wrSiSter.WriteLine($"{stage}");
+                wrSiSter.Close();
                 //보스 거미
                 break;
         }
@@ -204,9 +219,15 @@ public class GameManager : MonoBehaviour
 
     public void NextStage()
     {
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
+
+
+        var reader = new StreamReader(new FileStream(path, FileMode.Open));
+        stageNum = reader.ReadLine();
+        reader.Close();
+        stage = int.Parse(stageNum);
         stage++;
 
-        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
         print(path);
         var writer = new StreamWriter(File.Open(path, FileMode.OpenOrCreate));
         writer.WriteLine($"{stage}");
