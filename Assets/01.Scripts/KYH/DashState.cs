@@ -62,6 +62,7 @@ public class DashState : State
         }
         if (_player.currentChracter.beeIdx == 2)
         {
+            SoundManager.Instance.ChangeMainStageVolume("Healing", true, ISOund.SFX);
             dashTime += Time.deltaTime;
             _player.isUndead = true;
             AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo, "FatTired");

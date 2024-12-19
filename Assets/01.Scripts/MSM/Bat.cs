@@ -82,6 +82,7 @@ public class Bat : MonoBehaviour
                 moveDir = targetTrans.position - transform.position;
                 rb.velocity = moveDir.normalized * speed * 3;
                 AnimationPlayer.Instance.PlayAnimaiton(animator, "BatAttack");
+                SoundManager.Instance.ChangeMainStageVolume("Bat", true, ISOund.SFX);
                 once = false;
             }
             else if (once)

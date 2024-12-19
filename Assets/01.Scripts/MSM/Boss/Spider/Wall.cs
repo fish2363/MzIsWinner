@@ -11,7 +11,7 @@ public class Wall : MonoBehaviour
         {
             Ball b = collision.gameObject.GetComponent<Ball>();
 
-            SoundManager.Instance.ChangeMainStageVolume("SpiderBallBounce", true, ISOund.SFX);
+            SoundManager.Instance.ChangeMainStageVolume("tongue", true, ISOund.SFX);
 
             Vector3 income = b.MovePos;
             Vector3 normal = collision.contacts[0].normal;
