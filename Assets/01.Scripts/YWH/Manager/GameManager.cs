@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        FadeOut();
+
         if (Instance == null)
         {
             Instance = this;
