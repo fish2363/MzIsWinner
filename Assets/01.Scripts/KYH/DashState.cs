@@ -55,7 +55,6 @@ public class DashState : State
             {
                 dashTime = 0;
                 _player.SpriteCompo.DOFade(1f, 0.2f);
-                SpawnManager.Instance.skillUI.DOColor(Color.white, 0.2f);
                 _player.isUndead = false;
                 _player.ChangeState(StateEnum.Idle);
             }
@@ -66,6 +65,7 @@ public class DashState : State
             _player.isUndead = true;
             AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo, "FatTired");
             _player.SpriteCompo.DOColor(Color.green,0.2f);
+            SpawnManager.Instance.skillUI.DOColor(Color.grey, 0.2f);
             _player.moveSpeed = 1f;
             if(_player.CurrentHp != _player.MaxHp)
                 _player.CurrentHp++;
