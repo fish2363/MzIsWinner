@@ -8,6 +8,7 @@ public class Bear : MonoBehaviour
     BearHead head;
     BearStamp stamp;
     BearScratch scratch;
+    bool first = true;
     private void Awake()
     {
         head = GetComponentInChildren<BearHead>();
@@ -19,11 +20,33 @@ public class Bear : MonoBehaviour
         targetTrans = FindAnyObjectByType<Player>().transform;
         stamp.SetTarget(targetTrans);
         scratch.TargetSet(targetTrans);
-        StartCoroutine(BearHead());
+        StartCoroutine(BearStart());
+    }
+    private IEnumerator BearStart()
+    {
+        yield return StartCoroutine(head.HeadSee());
+        StartCoroutine(Attack());
     }
     private IEnumerator BearHead()
     {
-        yield return StartCoroutine(head.HeadSee());
+        if(first)
+        {
+            yield return StartCoroutine(head.HeadSee());
+            first = false;
+        }
+        else
+        {
+            int rand = Random.Range(0, 4);
+            switch (rand)
+            {
+                case 0:
+                    yield return StartCoroutine(head.Weakness());
+                    break;
+                default:
+                    yield return StartCoroutine(head.HeadSee());
+                    break;
+            }
+        }
         StartCoroutine(Attack());
     }
     private IEnumerator Attack()
