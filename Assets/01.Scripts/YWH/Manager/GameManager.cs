@@ -45,13 +45,13 @@ public class GameManager : MonoBehaviour
 
     public void FadeIn()
     {
-
         blackImage.DOFade(1,1);
         blackImage.raycastTarget = true;
     }
 
     public void FadeOut()
     {
+        print("DSDA");
         blackImage.DOFade(0, 1);
         blackImage.raycastTarget = false;
     }
