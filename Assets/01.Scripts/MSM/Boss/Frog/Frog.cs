@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Frog : MonoBehaviour
+public class Frog : MonoBehaviour,IBoss
 {
     Transform targetTrans;
     public Animator frogAnimator;
+
+    public ParticleSystem[] deathParticle;
 
     bool canAttack = true;
     public bool isTongueAttack { get; set; }
@@ -27,6 +29,7 @@ public class Frog : MonoBehaviour
     [SerializeField]
     private WeaknessPoint weakPoint;
 
+    public bool isDeath;
 
     private void Awake()
     {
@@ -41,7 +44,7 @@ public class Frog : MonoBehaviour
     }
     private void Update()
     {
-        if(!isRest)
+        if(!isRest && !isDeath)
         {
             if (!canAttack && !isTongueAttack)
             {
@@ -135,5 +138,28 @@ public class Frog : MonoBehaviour
         SoundManager.Instance.ChangeMainStageVolume("Landing",true,ISOund.SFX);
         frogFeet.enabled = false;
 
+    }
+
+    public void DeathBoss()
+    {
+        isDeath = true;
+        StartCoroutine(DeadRoutine());
+    }
+
+    private IEnumerator DeadRoutine()
+    {
+        ScreenShakeManager.Instance.ScreenShake(20f, true, 5, true, 5f);
+        yield return new WaitForSeconds(3f);
+        ScreenShakeManager.Instance.ScreenShake(20f, true, 1, true, 2f);
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0.2f;
+        ScreenShakeManager.Instance.ScreenShake(2f, true,100, true, 1f);
+        for (int i =0; i<deathParticle.Length; i++)
+        {
+            deathParticle[i].Play();
+        }
+        GameManager.Instance.FadeIn();
+        yield return new WaitForSeconds(2f);
+        GameManager.Instance.NextStage();
     }
 }

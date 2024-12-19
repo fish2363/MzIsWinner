@@ -25,6 +25,8 @@ public class WeaknessPoint : MonoBehaviour
 
             if (hit != null && !isClear)
             {
+                hit.GetComponent<Player>().RigidCompo.velocity = Vector2.zero;
+                hit.GetComponent<Player>().isAttack = false;
                 Death();
             }
         }
@@ -37,6 +39,8 @@ public class WeaknessPoint : MonoBehaviour
         isClear = true;
         //particle.Play();
         ScreenShakeManager.Instance.SuccessAttack();
+        GetComponentInParent<IBoss>().DeathBoss();
+        AnimationPlayer.Instance.PlayAnimaiton(GetComponentInParent<Animator>(),"Death");
     }
 
     private void OnDrawGizmos()

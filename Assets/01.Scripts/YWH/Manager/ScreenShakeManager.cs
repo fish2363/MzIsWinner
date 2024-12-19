@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
 {
-    private CinemachineVirtualCamera virtualCamera;
+    public CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin noise;
     private CinemachineConfiner2D confiner;
     

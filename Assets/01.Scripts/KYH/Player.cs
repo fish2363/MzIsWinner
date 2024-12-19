@@ -199,7 +199,7 @@ public class Player : MonoBehaviour,IDamage
 
     public void Death()
     {
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         StartCoroutine(DeathWaitRoutine());
         //공격 잘못 박거나 체력 0
     }

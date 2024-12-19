@@ -30,6 +30,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     private void Awake()
     {
+        cinemachine = FindAnyObjectByType<CinemachineVirtualCamera>();
         ReStart();
     }
 

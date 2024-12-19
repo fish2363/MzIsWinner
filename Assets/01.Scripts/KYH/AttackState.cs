@@ -48,6 +48,8 @@ public class AttackState : State
         if (hit != null)
         {
             _player.Death();
+            _player.RigidCompo.velocity = Vector2.zero;
+            _player.isAttack = false;
         }
     }
 }

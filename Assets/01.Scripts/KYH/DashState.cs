@@ -43,7 +43,7 @@ public class DashState : State
     public override void StateUpdate()
     {
         base.StateUpdate();
-        if(_player.currentChracter.beeIdx == 0)
+        if(_player.currentChracter.beeIdx == 0 || _player.currentChracter.beeIdx == 3)
         {
             dashTime += Time.deltaTime;
             _player.isUndead = true;
