@@ -71,13 +71,13 @@ public class Spider : MonoBehaviour,IBoss
     {
         Vector3 trans  = transform.position;
 
-        while (transform.parent.position.y > AttackDown)
+        while (transform.position.y > AttackDown)
         {
-            rb.velocity = new Vector3(0, AttackDown - transform.parent.position.y, 0).normalized * speed * 10;
+            rb.velocity = new Vector3(0, AttackDown - transform.position.y, 0).normalized * speed * 10;
             yield return null;
         }
 
-        transform.parent.position = new Vector3(transform.parent.position.x, AttackDown);
+        transform.position = new Vector3(transform.position.x, AttackDown);
 
         Weakness.isRest = true;
 
@@ -85,13 +85,13 @@ public class Spider : MonoBehaviour,IBoss
 
         Weakness.isRest = false;
 
-        while (transform.parent.position.y < trans.y)
+        while (transform.position.y < trans.y)
         {
-            rb.velocity = new Vector3(0, trans.y - transform.parent.position.y, 0).normalized * speed;
+            rb.velocity = new Vector3(0, trans.y - transform.position.y, 0).normalized * speed;
             yield return null;
         }
 
-        transform.parent.position = new Vector3(transform.parent.position.x, trans.y);
+        transform.position = new Vector3(transform.position.x, trans.y);
     }
 
     public void DeathBoss()
