@@ -56,10 +56,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            NextStage();
-        if (Input.GetMouseButtonDown(1))
-            RestartScene();
+        //if (Input.GetMouseButtonDown(0))
+        //    NextStage();
+        //if (Input.GetMouseButtonDown(1))
+        //    RestartScene();
     }
 
     private void LoadScene()
