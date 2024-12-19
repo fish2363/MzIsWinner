@@ -51,8 +51,8 @@ public class MiniFrog : MonoBehaviour
     }
 
     private void Flip(float moveSpeed)
-    {
-        // moveSpeed에 따라 물고기의 방향을 바꿔줍니다
+    {   
+
         if (moveSpeed < 0 && transform.localScale.x > 0)
         {
             transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
