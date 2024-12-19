@@ -67,7 +67,6 @@ public class Player : MonoBehaviour,IDamage
     public int MaxHp = 3;
     [Header("현재 체력")]
     public int CurrentHp;
-    [HideInInspector]
     public float checkerRadius =1f;
     public bool isUndead { get; set; }
     public bool isShield { get; set; }
@@ -202,6 +201,7 @@ public class Player : MonoBehaviour,IDamage
     {
         Time.timeScale = 0f;
         StartCoroutine(DeathWaitRoutine());
+        //공격 잘못 박거나 체력 0
     }
 
     public void Shield()
@@ -222,6 +222,15 @@ public class Player : MonoBehaviour,IDamage
     private IEnumerator DeathWaitRoutine()
     {
         yield return new WaitForSeconds(1f);
-        SpawnManager.Instance.ReStart();
+        //SpawnManager.Instance.ReStart();
+
+        //부활인데 아직 ㄴㄴ
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, checkerRadius);
+        Gizmos.color = Color.white;
     }
 }

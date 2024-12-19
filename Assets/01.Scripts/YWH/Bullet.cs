@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rigid;
     private SpriteRenderer sprite;
     public Transform player;
+    private bool isHitting;
+
 
     private void Awake()
     {
@@ -40,13 +42,20 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Water"))
         {
+            if (isHitting)
+            {
+                return;
+            }
+            isHitting = true;
+            collision.GetComponent<Player>().Damage(1);
+
             ScreenShakeManager.Instance.ScreenShake(20, true, 0.2f, true, 0.2f);
             transform.DOScale(new Vector2(1 * 1.5f, 1 * 1.5f), 0.13f);
             sprite.DOFade(0, 0.1f).OnComplete(() => { Destroy(gameObject); });
             
-            print("ÃÑ ¸ÂÀ½");
+           
         
         }
         

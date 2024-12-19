@@ -24,6 +24,9 @@ public class Frog : MonoBehaviour
 
     FrogTongue tongue;
 
+    [SerializeField]
+    private WeaknessPoint weakPoint;
+
 
     private void Awake()
     {
@@ -111,13 +114,17 @@ public class Frog : MonoBehaviour
     {
         isRest = true;
         AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogRest");
+        weakPoint.isRest = true;
+        weakPoint.gameObject.GetComponent<BoxCollider2D>().enabled = false;
         StartCoroutine(Wait());
     }
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(15f);
+        weakPoint.GetComponent<BoxCollider2D>().enabled = true;
         isRest = false;
+        weakPoint.isRest = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -125,5 +132,6 @@ public class Frog : MonoBehaviour
         if (isRest) return;
         AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogIdle");
         frogFeet.enabled = false;
+
     }
 }
