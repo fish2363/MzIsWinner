@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: startUI_0
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 926
+        width: 214
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b80e112df510baf4fbee12b854fd4bf8
+      internalID: -817659482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: startUI_1
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 806
+        width: 59
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede567f17572bf94db68ff6df986d446
+      internalID: 30009599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: startUI_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 785
+        width: 47
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6091101c29a89d74e8cc21c4e31901c9
+      internalID: 895364356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: startUI_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 760
+        width: 51
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d0b1eacc6567bb47b773a99a24074b1
+      internalID: 215634216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: startUI_4
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 652
+        width: 104
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d16607658992d2d49a0c060debab8aab
+      internalID: -270319030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: startUI_5
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 447
+        width: 98
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d345a16da7da440a86b66115d5ad45
+      internalID: -1333478625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: startUI_6
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 270
+        width: 92
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8029c700410ed8f4cb1f7560b62491c2
+      internalID: -1269656229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: startUI_7
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 84
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 819e26ae5d3508148b261522a4004c32
+      internalID: -190350921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      startUI_0: -817659482
+      startUI_1: 30009599
+      startUI_2: 895364356
+      startUI_3: 215634216
+      startUI_4: -270319030
+      startUI_5: -1333478625
+      startUI_6: -1269656229
+      startUI_7: -190350921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
