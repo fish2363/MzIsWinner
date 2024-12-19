@@ -162,7 +162,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1066314985153604357
 Transform:
   m_ObjectHideFlags: 0
@@ -20659,7 +20659,7 @@ MonoBehaviour:
   upWaitTime: 3
   downEnd: {fileID: 7229646037801954206}
   headSpeed: 0.1
-  WeaknessTarget: {fileID: 0}
+  WeaknessTarget: {fileID: 2117067610242575145}
 --- !u!1 &8405031509268565349
 GameObject:
   m_ObjectHideFlags: 0
