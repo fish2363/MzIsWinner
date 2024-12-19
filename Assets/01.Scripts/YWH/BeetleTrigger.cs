@@ -21,7 +21,7 @@ public class BeetleTrigger : MonoBehaviour
 
             isAttaking = true;
 
-            beetle.DOMoveY(movepos.position.y, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
+            beetle.DOMoveY(movepos.position.y, 0.25f).SetEase(Ease.InSine).OnComplete(() =>
             { beetle.DOMoveY(originpos.position.y, 0.5f).SetEase(Ease.OutSine).SetDelay(2).OnComplete(() => { isAttaking = false; }); });
         }
         
