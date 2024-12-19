@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        FadeOut();
+      
 
         if (Instance == null)
         {
@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void FadeIn()
     {
+
         blackImage.DOFade(1,1);
         blackImage.raycastTarget = true;
     }
@@ -52,6 +53,11 @@ public class GameManager : MonoBehaviour
     public void FadeOut()
     {
         blackImage.DOFade(0, 1);
+        blackImage.raycastTarget = false;
+    }
+    public void WaitFadeOut()
+    {
+        blackImage.DOFade(0, 1).SetDelay(2);
         blackImage.raycastTarget = false;
     }
 
@@ -191,6 +197,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("SpiderBoss");
                 //보스 거미
                 break;
+                FadeOut();
         }
     }
 
@@ -209,6 +216,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartScene()
     {
+        FadeOut();
         switch (stage)
         {
             case 0:
@@ -242,6 +250,7 @@ public class GameManager : MonoBehaviour
                 stage--;
                 SceneManager.LoadScene("Cave");
                 break;
+
         }
     }
 }

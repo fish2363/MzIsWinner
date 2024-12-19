@@ -63,6 +63,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 80dab18368f191f4f93f299fecd3b970, type: 3}
   - {fileID: 8300000, guid: 3af915b0eada8e44e93e291a0ad439ea, type: 3}
   - {fileID: 8300000, guid: f41768dd846a4a942ad150f8c6bdabc1, type: 3}
+  - {fileID: 8300000, guid: d7a31b424ffaf774e83ad9afd488a2c7, type: 3}
+  - {fileID: 8300000, guid: 7dc58764bc35f6048adc63276479e9a5, type: 3}
+  - {fileID: 8300000, guid: 263c60d5f38ded44395274e22f68afea, type: 3}
+  - {fileID: 8300000, guid: e5b63ad1ab6a1a849b609b0788048368, type: 3}
+  - {fileID: 8300000, guid: c1d08b43424e533459ef38dd99e3aed7, type: 3}
+  - {fileID: 8300000, guid: 7e64c8e2bde554e4e86ae780c12b3386, type: 3}
   bgmAudioPlayer: {fileID: 1425968308727443816}
   vfxAudioPlayer: {fileID: 7073616253869219246}
 --- !u!1 &8138778064383345445
