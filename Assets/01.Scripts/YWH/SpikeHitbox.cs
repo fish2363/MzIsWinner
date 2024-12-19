@@ -17,9 +17,9 @@ public class SpikeHitbox : MonoBehaviour
         if (!isFalling && collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             if (isUp)
-            spikeRigid.AddForce(Vector2.up * Random.Range(5, 13), ForceMode2D.Impulse);
+            spikeRigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
             else
-            spikeRigid.AddForce(Vector2.down * Random.Range(5, 13), ForceMode2D.Impulse);
+            spikeRigid.AddForce(Vector2.down * 5, ForceMode2D.Impulse);
             isFalling = true;
         }
         

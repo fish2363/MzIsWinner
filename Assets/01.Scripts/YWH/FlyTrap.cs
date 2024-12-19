@@ -38,7 +38,6 @@ public class FlyTrap : MonoBehaviour
         flyTrap.Play("Atk");
         yield return new WaitForSeconds(0.2f);
 
-    
         player.Damage(1);
         ScreenShakeManager.Instance.ScreenShake(20, true, 0.2f, true, 0.2f);
 
