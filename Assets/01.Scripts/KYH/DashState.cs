@@ -50,5 +50,20 @@ public class DashState : State
                 _player.ChangeState(StateEnum.Idle);
             }
         }
+        if (_player.currentChracter.beeIdx == 2)
+        {
+            dashTime += Time.deltaTime;
+            _player.isUndead = true;
+            _player.SpriteCompo.DOFade(0.3f, 0.2f);
+            _player.RigidCompo.velocity = Vector2.down * _player.DashPower;
+
+            if (dashTime >= maxaDashTime)
+            {
+                dashTime = 0;
+                _player.SpriteCompo.DOFade(1f, 0.2f);
+                _player.isUndead = false;
+                _player.ChangeState(StateEnum.Idle);
+            }
+        }
     }
 }
