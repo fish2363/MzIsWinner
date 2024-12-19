@@ -75,6 +75,7 @@ public class Player : MonoBehaviour,IDamage
     public ParticleSystem healingParticle;
     public bool isSkillLock;
     public bool isAttackLock;
+    public bool isTutorial;
 
     private void Awake()
     {
@@ -101,6 +102,7 @@ public class Player : MonoBehaviour,IDamage
         moveSpeed = currentChracter.moveSpeed;
         MaxHp = currentChracter.maxHp;
         CurrentHp= MaxHp;
+        if(!isTutorial)
         HpManager.Instance.SetActiveHp();
         ChangeState(StateEnum.Idle);
     }
@@ -211,11 +213,15 @@ public class Player : MonoBehaviour,IDamage
 
         if (!isUndead)
         {
-            CurrentHp -= damage;
             SpriteCompo.DOColor(Color.red, 0.1f);
             SpriteCompo.DOColor(Color.white, 0.1f).SetDelay(0.5f);
-            ScreenShakeManager.Instance.ScreenShake(20f, true, 0.2f, true, 0.5f);
-            HpManager.Instance.HpChange(CurrentHp);
+            if (!isTutorial)
+            {
+                CurrentHp -= damage;
+                ScreenShakeManager.Instance.ScreenShake(20f, true, 0.2f, true, 0.5f);
+            }
+            if (!isTutorial)
+                HpManager.Instance.HpChange(CurrentHp);
             if (CurrentHp == 0)
                 Death();
         }

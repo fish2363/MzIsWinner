@@ -11,6 +11,19 @@ public class HpManager : MonoBehaviour
     public int currentHp;
     public GameObject dsad;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     public void SetActiveHp()
     {
         dsad.SetActive(true);
