@@ -132,6 +132,7 @@ public class Frog : MonoBehaviour
     {
         if (isRest) return;
         AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogIdle");
+        SoundManager.Instance.ChangeMainStageVolume("Landing",true,ISOund.SFX);
         frogFeet.enabled = false;
 
     }

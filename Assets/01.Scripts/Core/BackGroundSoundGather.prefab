@@ -46,7 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50175fbd9fb3ab14c873304eca0d7fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: []
+  music:
+  - {fileID: 8300000, guid: 0aab0c86672201e47a6bdf18cb5f912c, type: 3}
+  - {fileID: 8300000, guid: 6d5e48d67e4d20f4082d984a71ff1ad2, type: 3}
+  - {fileID: 8300000, guid: 905c7a492b1b1294b93d9dd25ff9510a, type: 3}
+  - {fileID: 8300000, guid: d148a92d29212eb4bac022a3939d650f, type: 3}
+  - {fileID: 8300000, guid: e771b4e905d9f14478c4469bdc5774db, type: 3}
   bgmAudioPlayer: {fileID: 1425968308727443816}
   vfxAudioPlayer: {fileID: 7073616253869219246}
 --- !u!1 &8138778064383345445
