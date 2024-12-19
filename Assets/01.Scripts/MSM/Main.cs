@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
@@ -14,5 +15,10 @@ public class Main : MonoBehaviour
     {
         SoundManager.Instance.ChangeMainStageVolume("Click", true, ISOund.SFX);
         Application.Quit();
+    }
+    public void Story()
+    {
+        SoundManager.Instance.ChangeMainStageVolume("Click", true, ISOund.SFX);
+        SceneManager.LoadScene("Story");
     }
 }

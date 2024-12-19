@@ -89,6 +89,6 @@ public class Story : MonoBehaviour
     }
     public void NextScene()
     {
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene("Main");
     }
 }
