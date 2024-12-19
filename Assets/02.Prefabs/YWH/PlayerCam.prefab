@@ -546,7 +546,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 7287084487327874132}
   vignette: {fileID: 2129992535924926826}
   deadVignette: {fileID: 2998623169448919250}
-  particleSystem: {fileID: 0}
+  particleSystem: {fileID: 1053631883626208452}
 --- !u!114 &6116734641444024367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,6 +834,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
+--- !u!1 &1053631883626208452 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 185524, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
+  m_PrefabInstance: {fileID: 1053631883626285168}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1053631883626513454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 494686, guid: 7ef15b3b75916c044aa8aa197b362208, type: 3}
