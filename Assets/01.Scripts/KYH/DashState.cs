@@ -8,7 +8,6 @@ public class DashState : State
     private float maxaDashTime = 0.2f;
     private float dashTime;
     private Vector2 mouseDirect;
-    private bool isOneTime;
 
     public DashState(Player _agent) : base(_agent)
     {
@@ -47,9 +46,6 @@ public class DashState : State
         base.StateUpdate();
         if(_player.currentChracter.beeIdx == 0 || _player.currentChracter.beeIdx == 3)
         {
-            if (!isOneTime)
-            {
-                isOneTime = true;
                 dashTime += Time.deltaTime;
                 _player.isUndead = true;
                 _player.SpriteCompo.DOFade(0.3f, 0.2f);
@@ -58,17 +54,14 @@ public class DashState : State
 
                 if (dashTime >= maxaDashTime)
                 {
-                    isOneTime = false;
                     dashTime = 0;
                     _player.SpriteCompo.DOFade(1f, 0.2f);
                     _player.isUndead = false;
                     _player.ChangeState(StateEnum.Idle);
                 }
-            }
         }
-        if (_player.currentChracter.beeIdx == 2 && !isOneTime)
+        if (_player.currentChracter.beeIdx == 2)
         {
-            isOneTime = true;
             SoundManager.Instance.ChangeMainStageVolume("Healing", true, ISOund.SFX);
             dashTime += Time.deltaTime;
             _player.isUndead = true;
@@ -81,7 +74,6 @@ public class DashState : State
             if (dashTime >= maxaDashTime)
             {
                 dashTime = 0;
-                isOneTime =false;
                 _player.moveSpeed = _player.currentChracter.moveSpeed;
                 _player.SpriteCompo.DOColor(Color.white, 0.2f);
                 _player.isUndead = false;
