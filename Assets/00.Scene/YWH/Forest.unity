@@ -343,6 +343,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9028342910312206104, guid: 2410f8f31e093794689da5c9bc5fb842, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7201,7 +7205,7 @@ Transform:
   m_GameObject: {fileID: 1248656792}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -80.48, y: 4.37, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7220,7 +7224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterList: {fileID: 11400000, guid: 499632c922a85904faface828866863d, type: 2}
-  player: {fileID: 0}
+  player: {fileID: 8713026080587070224, guid: ab1a4e622481a974585dbe6c4ec4c77c, type: 3}
   spawnPoint: {fileID: 0}
   cinemachine: {fileID: 0}
 --- !u!1 &1250667546
