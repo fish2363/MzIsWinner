@@ -194,6 +194,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTrans: {fileID: 0}
+  deathParticle:
+  - {fileID: 19819134, guid: e73000b12fb76244cbffd6abbf8bb6e4, type: 3}
+  - {fileID: 198601879880043448, guid: aa72280b4bb67cb468b0ffc37bcfc9c0, type: 3}
+  isDeath: 0
 --- !u!1 &2092105520604846048
 GameObject:
   m_ObjectHideFlags: 0
@@ -20424,7 +20428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4195796338558942893
 Transform:
   m_ObjectHideFlags: 0
