@@ -14,7 +14,11 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     public Image blackImage;
-    private int stage;
+    private int stage = 0;
+
+    string stageNum;
+
+    public SpawnManager spawnManager;
 
     private void Awake()
     {
@@ -29,6 +33,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        LoadScene();
+    }
+
+    
     public Vector3 GetPlayerPosition()
     {
         return player.position; 
@@ -52,14 +62,27 @@ public class GameManager : MonoBehaviour
             RestartScene();
     }
 
-    public void NextStage()
+    private void LoadScene()
     {
-        stage++;
-        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\password.txt";
-        print(path);
-        var writer = new StreamWriter(File.Open(path, FileMode.OpenOrCreate));
-        writer.Write($"{stage}");
-        writer.Close();
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
+
+        try
+        {
+            var reader = new StreamReader(new FileStream(path, FileMode.Open));
+            stageNum = reader.ReadLine();
+            reader.Close();
+        }
+        catch(Exception e)
+        {
+            var writer = new StreamWriter(File.Open(path, FileMode.OpenOrCreate));
+            writer.WriteLine($"{stage}");
+            writer.Close();
+            var reader = new StreamReader(new FileStream(path, FileMode.Open));
+            stageNum = reader.ReadLine();
+            reader.Close();
+        }
+
+        stage = int.Parse(stageNum);
 
         switch (stage)
         {
@@ -92,14 +115,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RestartScene()
+
+    public void NextStage()
     {
-        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\password.txt";
+        stage++;
+
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
         print(path);
         var writer = new StreamWriter(File.Open(path, FileMode.OpenOrCreate));
-        writer.Write($"{stage}");
+        writer.WriteLine($"{stage}");
         writer.Close();
+        LoadScene();
+    }
 
+    public void RestartScene()
+    {
         switch (stage)
         {
             case 0:

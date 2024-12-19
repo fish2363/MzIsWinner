@@ -31,7 +31,8 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     int idx;
 
-    private void Awake()
+
+    public void Gamestart()
     {
         cinemachine = FindAnyObjectByType<CinemachineVirtualCamera>();
         ReStart();
