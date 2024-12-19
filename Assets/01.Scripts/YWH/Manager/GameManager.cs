@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Image blackImage;
     private int stage = 0;
 
+    [SerializeField]
     string stageNum;
 
     public SpawnManager spawnManager;

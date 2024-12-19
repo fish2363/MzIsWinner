@@ -8,13 +8,16 @@ using System;
 
 public class SpawnManager : MonoSingleton<SpawnManager>
 {
+    public static SpawnManager Instance;
+
+
     public CharacterSOList characterList;
     private GameObject currentPlayer;
     [Header("플레이어 프리팹")]
     [SerializeField]
     private GameObject player;
-    [SerializeField]
-    private Transform spawnPoint;
+    [HideInInspector]
+    public Transform spawnPoint;
 
     public Action OnSpawn;
 
@@ -30,6 +33,18 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     public bool IsGameStart { get; set; }
 
     int idx;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void Gamestart()
     {

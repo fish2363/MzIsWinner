@@ -63,7 +63,7 @@ public class DashState : State
             dashTime += Time.deltaTime;
             _player.isUndead = true;
             AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo, "FatTired");
-            _player.SpriteCompo.DOFade(0.3f, 0.2f);
+            _player.SpriteCompo.DOColor(Color.green,0.2f);
             _player.moveSpeed = 1f;
             if(_player.CurrentHp != _player.MaxHp)
                 _player.CurrentHp++;
@@ -71,7 +71,7 @@ public class DashState : State
             {
                 dashTime = 0;
                 _player.moveSpeed = _player.currentChracter.moveSpeed;
-                _player.SpriteCompo.DOFade(1f, 0.2f);
+                _player.SpriteCompo.DOColor(Color.white, 0.2f);
                 _player.isUndead = false;
                 _player.ChangeState(StateEnum.Idle);
             }
