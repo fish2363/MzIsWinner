@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/03.Sprite/YWH/2D Pixel Art Platformer Biome - American Forest/Demo.unity.meta
+guid: ab1a4e622481a974585dbe6c4ec4c77c
+DefaultImporter:
+========
 guid: 924ed7c5c927cac458a221f6586f5c49
 PrefabImporter:
+>>>>>>>> Base:Assets/02.Prefabs/KYH/Player.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

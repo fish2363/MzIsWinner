@@ -84,6 +84,7 @@ public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
         DOTween.To(() => virtualCamera.m_Lens.OrthographicSize, x => virtualCamera.m_Lens.OrthographicSize = x, 4f, 0.5f).OnComplete(() =>
         { DOTween.To(() => virtualCamera.m_Lens.Dutch, x => virtualCamera.m_Lens.Dutch = x, 0f, 0.5f); });
 
+
     }
 
 
