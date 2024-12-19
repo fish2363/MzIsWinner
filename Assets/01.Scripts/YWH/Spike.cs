@@ -13,7 +13,7 @@ public class Spike : MonoBehaviour
     {
         spikeSprite = GetComponent<SpriteRenderer>();
     }
-
+        
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player") || collision.gameObject.layer == LayerMask.NameToLayer("Water"))

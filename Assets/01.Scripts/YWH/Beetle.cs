@@ -24,6 +24,8 @@ public class Beetle : MonoBehaviour
             ScreenShakeManager.Instance.ScreenShake(30, true, 0.3f, true, 0.2f);
 
             
+
+
         }
     }
 }
