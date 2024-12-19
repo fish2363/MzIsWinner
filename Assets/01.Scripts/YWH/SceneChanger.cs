@@ -11,4 +11,10 @@ public class SceneChanger : MonoBehaviour
             GameManager.Instance.LoadScene();
         }
     }
+
+    private void Awake()
+    {
+        SpawnManager.Instance.Gamestart();
+
+    }
 }
