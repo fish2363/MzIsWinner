@@ -28,8 +28,14 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         currentPlayer = Instantiate(player,spawnPoint);
         currentPlayer.transform.SetParent(null);
         int idx = Random.Range(0,characterList.characters.Count);
+        CutScene();
         Player playerScript = currentPlayer.GetComponent<Player>();
         playerScript.currentChracter = characterList.characters[idx];
         cinemachine.Follow = playerScript.transform;
+    }
+
+    private void CutScene()
+    {
+
     }
 }
