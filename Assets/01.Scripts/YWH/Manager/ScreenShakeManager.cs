@@ -77,7 +77,15 @@ public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
 
         
     }
+    public void SuccessAttack()
+    {
+        ScreenShake(20, true, 0.2f, true, 0.5f);
+        vignette.DOFade(0, 0.2f);
+        DOTween.To(() => virtualCamera.m_Lens.OrthographicSize, x => virtualCamera.m_Lens.OrthographicSize = x, 4f, 0.5f).OnComplete(() =>
+        { DOTween.To(() => virtualCamera.m_Lens.Dutch, x => virtualCamera.m_Lens.Dutch = x, 0f, 0.5f); });
 
-    
-    
+    }
+
+
+
 }

@@ -11,6 +11,7 @@ public class WeaknessPoint : MonoBehaviour
     private float checkerRadius;
 
     public bool isRest;
+    private bool isClear;
 
     [SerializeField]
     private GameObject aimTarget;
@@ -21,7 +22,7 @@ public class WeaknessPoint : MonoBehaviour
         {
             Collider2D hit = Physics2D.OverlapCircle(transform.position, checkerRadius, whatIsPlayer);
 
-            if (hit != null)
+            if (hit != null && !isClear)
             {
                 Death();
             }
@@ -32,6 +33,8 @@ public class WeaknessPoint : MonoBehaviour
     private void Death()
     {
         print("Å¬¸®¾î");
+        isClear = true;
+        ScreenShakeManager.Instance.SuccessAttack();
     }
 
     private void OnDrawGizmos()
