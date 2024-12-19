@@ -30,8 +30,12 @@ public class FrogTongue : MonoBehaviour
 
     private void Awake()
     {
-        player = FindAnyObjectByType<Player>();
         tongueAnim = tongueSprite.GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        player = FindAnyObjectByType<Player>();
     }
 
     public void Attack()

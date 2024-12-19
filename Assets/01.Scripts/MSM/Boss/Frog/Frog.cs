@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Frog : MonoBehaviour
 {
-    [SerializeField]Transform targetTrans;
+    Transform targetTrans;
     public Animator frogAnimator;
 
     bool canAttack = true;
@@ -36,6 +36,7 @@ public class Frog : MonoBehaviour
     }
     private void Start()
     {
+        targetTrans = FindAnyObjectByType<Player>().transform;
         jump.TargetSet(targetTrans);
     }
     private void Update()

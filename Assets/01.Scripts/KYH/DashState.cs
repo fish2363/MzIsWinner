@@ -19,7 +19,12 @@ public class DashState : State
         base.Enter();
         print("´ë½¬");
         _player.RigidCompo.velocity = Vector2.zero;
-        mouseDirect = _player.inputReader.direction;
+
+        if (_player.inputReader.direction == Vector3.zero)
+            mouseDirect = Vector2.right;
+        else
+            mouseDirect = _player.inputReader.direction;
+
 
         if (_player.currentChracter.beeIdx == 1)
         {
