@@ -49,7 +49,10 @@ public class FlyTrap : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player.isStopMove = false;
         isAttaking = false;
+
+        yield return new WaitForSeconds(1f);
         pointEffector.enabled = true;
         flyTrap.Play("Idle");
+
     }
 }
