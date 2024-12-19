@@ -4623,6 +4623,7 @@ GameObject:
   - component: {fileID: 1039132113}
   - component: {fileID: 1039132112}
   - component: {fileID: 1039132111}
+  - component: {fileID: 1039132115}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -4653,6 +4654,8 @@ PlayableDirector:
     value: {fileID: 1820155183}
   - key: {fileID: 3359584269513516771, guid: f9474a001315e9147bd7ad4a402ef099, type: 2}
     value: {fileID: 1989459916}
+  - key: {fileID: 2043093796341532820, guid: f9474a001315e9147bd7ad4a402ef099, type: 2}
+    value: {fileID: 1039132115}
   m_ExposedReferences:
     m_References:
     - 4adc28c1d034dee4283c6fba33af9575: {fileID: 1820155183}
@@ -4698,6 +4701,36 @@ Transform:
   - {fileID: 536571210}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1039132115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039132110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: f4f36cdfdd94939458c062bfb73fbad2, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1039132112}
+          m_TargetAssemblyTypeName: BossSetter, Assembly-CSharp
+          m_MethodName: StartBoss
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1050016551
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class BossSetter : MonoBehaviour
 {
     public Transform spawnPoint;
     private CinemachineVirtualCamera cinemachine;
-    
+    Player playerScript;
 
     private void Awake()
     {
@@ -20,9 +20,14 @@ public class BossSetter : MonoBehaviour
     {
         GameObject player = Instantiate(SpawnManager.Instance.player, spawnPoint);
         //currentPlayer.transform.SetParent(null);
-        Player playerScript = player.GetComponent<Player>();
+        playerScript = player.GetComponent<Player>();
         playerScript.currentChracter = SpawnManager.Instance.currentChracter;
         cinemachine.Follow = playerScript.transform;
         playerScript.isStopMove = true;
+    }
+
+    public void StartBoss()
+    {
+        playerScript.isStopMove = false;
     }
 }
