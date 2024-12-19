@@ -5,7 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/00.Scene/KYH/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/00.Scene/MainScene/Tutorial.unity
+    guid: 78265e7168324014eacf92c5290593c4
+  - enabled: 1
+    path: Assets/00.Scene/MainScene/MiniStage1.unity
+    guid: 235bbec84a6b70947863673fcb6b7f54
+  - enabled: 1
+    path: Assets/00.Scene/MainScene/FrogBoss.unity
+    guid: 7eac6acbe14600e49ab3d34501f6d62f
+  - enabled: 1
+    path: Assets/00.Scene/MainScene/MiniStage2.unity
+    guid: 1cd54ec7e0039a14483e3aa0556f6e9c
+  - enabled: 1
+    path: Assets/00.Scene/MainScene/BearBoss.unity
+    guid: ffde52ab05d445945999e8e07d803e69
+  - enabled: 1
+    path: Assets/00.Scene/MainScene/MiniStage3.unity
+    guid: 15789747cd5127942a49dbfb76af8b37
+  - enabled: 1
+    path: Assets/00.Scene/MainScene/SpiderBoss.unity
+    guid: 69a9b6abd05a2104e8459dbb9952b170
   m_configObjects: {}
