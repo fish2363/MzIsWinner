@@ -2,6 +2,8 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class Story : MonoBehaviour
 {
@@ -79,7 +81,14 @@ public class Story : MonoBehaviour
             storys[7].gameObject.SetActive(true);
         });
         seq.Join(Book.DOLocalRotate(new Vector3(0, 0, 0), bookTimer));
-        seq.AppendInterval(timer);
-
+        seq.AppendInterval(timer * 2);
+    }
+    public void RePlay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void NextScene()
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 }
