@@ -73,6 +73,63 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void MainLoadScene()
+    {
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
+
+        try
+        {
+            var reader = new StreamReader(new FileStream(path, FileMode.Open));
+            stageNum = reader.ReadLine();
+            reader.Close();
+        }
+        catch (Exception e)
+        {
+            var writer = new StreamWriter(File.Open(path, FileMode.OpenOrCreate));
+            writer.WriteLine($"{stage}");
+            writer.Close();
+            var reader = new StreamReader(new FileStream(path, FileMode.Open));
+            stageNum = reader.ReadLine();
+            reader.Close();
+        }
+
+        stage = int.Parse(stageNum);
+
+        switch (stage)
+        {
+            case 0:
+                //보스 개구리
+                SceneManager.LoadScene("Tutorial");
+                break;
+            case 1:
+                //보스 개구리
+                SceneManager.LoadScene("River");
+                break;
+            case 2:
+                //보스 곰
+                SceneManager.LoadScene("River");
+                break;
+            case 3:
+                SceneManager.LoadScene("Forest");
+
+                //보스 거미
+                break;
+            case 4:
+                SceneManager.LoadScene("Forest");
+                //보스 개구리
+                break;
+            case 5:
+                //보스 곰
+                SceneManager.LoadScene("Cave");
+
+                break;
+            case 6:
+                SceneManager.LoadScene("Cave");
+                //보스 거미
+                break;
+        }
+    }
+
     public void LoadScene()
     {
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";

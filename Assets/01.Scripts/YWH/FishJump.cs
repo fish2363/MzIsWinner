@@ -12,6 +12,7 @@ public class FishMovement : MonoBehaviour
     private bool isMovingToTarget = true;
     private SpriteRenderer sprite;
     private Vector3 originalScale;
+    private int attackDamage = 1;
 
     private void Awake()
     {
@@ -63,9 +64,14 @@ public class FishMovement : MonoBehaviour
             transform.DOScale(originalScale * 1.7f, 0.1f).OnComplete(() => transform.DOScale(originalScale, 0.1f));
             transform.DOShakeRotation(0.3f, 1, 10, 90);
             ScreenShakeManager.Instance.ScreenShake(30, true, 0.3f, true, 0.2f);
+            IDamage damage = collision.GetComponent<IDamage>();
+
+            if (damage != null)
+            {
+                damage.Damage(attackDamage);
+            }
         }
     }
-
 
     private void OnDisable()
     {

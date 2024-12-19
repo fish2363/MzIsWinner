@@ -18,5 +18,6 @@ public class CharacterSO : ScriptableObject
     public CharacterType character;
     public int beeIdx;
     public Sprite frontImage;
+    public Sprite skillImage;
     public int skillCool;
 }

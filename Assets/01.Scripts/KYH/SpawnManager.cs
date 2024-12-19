@@ -19,10 +19,13 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     [HideInInspector]
     public Transform spawnPoint;
 
+    public Image skillUI;
+
     public Action OnSpawn;
 
     [SerializeField]
     private CinemachineVirtualCamera cinemachine;
+
 
     [Header("ÄÆ¾À¼³Á¤°ª")]
     [SerializeField]
@@ -67,6 +70,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         cutScene.SetActive(true);
         spawningBee.sprite = characterList.characters[idx].frontImage;
+        skillUI.sprite = characterList.characters[idx].skillImage;
         currentChracter = characterList.characters[idx];
         yield return new WaitForSeconds(4f);
 
