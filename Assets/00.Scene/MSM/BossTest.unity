@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &163306901
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 710325986}
   - component: {fileID: 710325985}
   - component: {fileID: 710325984}
+  - component: {fileID: 710325988}
   m_Layer: 5
   m_Name: SettingCanvas
   m_TagString: Untagged
@@ -992,6 +993,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &710325988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710325983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 283cfab05fd77a847bdb9dd1694a7117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setting: {fileID: 0}
+  audioMixer: {fileID: 0}
 --- !u!1 &742065362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1025,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &742065363
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1231,7 +1246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &860371247
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2465,7 +2480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &2059601594
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2758,7 +2773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2608738886203324280, guid: 074f99d8b5120924486e2c45711b3c00, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.3
+      value: 2.64
       objectReference: {fileID: 0}
     - target: {fileID: 2608738886203324280, guid: 074f99d8b5120924486e2c45711b3c00, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2799,10 +2814,6 @@ PrefabInstance:
     - target: {fileID: 3814315319192835783, guid: 074f99d8b5120924486e2c45711b3c00, type: 3}
       propertyPath: m_Name
       value: Spider
-      objectReference: {fileID: 0}
-    - target: {fileID: 3814315319192835783, guid: 074f99d8b5120924486e2c45711b3c00, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -12,9 +12,13 @@ public class Spider : MonoBehaviour,IBoss
     [SerializeField]Animator anim;
     [SerializeField] WeaknessPoint Weakness;
     [SerializeField] float weaknessTime;
+    [SerializeField] float AttackDown;
+    [SerializeField] float speed;
+    Rigidbody2D rb;
     bool isFirst = true;
     private void Awake()
     {
+        rb = GetComponentInParent<Rigidbody2D>();
         spiderDown = GetComponentInChildren<SpiderDown>();
         spiderSpit = GetComponentInChildren<SpiderSpit>();
         spiderBall = GetComponentInChildren<SpiderBall>();
@@ -55,14 +59,39 @@ public class Spider : MonoBehaviour,IBoss
                 yield return new WaitForSeconds(0.3f);
                 break;
             default:
-                Weakness.isRest = true;
-                yield return new WaitForSeconds(weaknessTime);
-                Weakness.isRest = false;
+                yield return StartCoroutine(Weaknesss());
                 break;
         }
         AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderIdle");
         yield return new WaitForSeconds(coolTime);
         StartCoroutine(Attack());
+    }
+
+    public IEnumerator Weaknesss()
+    {
+        Vector3 trans  = transform.position;
+
+        while (transform.parent.position.y > AttackDown)
+        {
+            rb.velocity = new Vector3(0, AttackDown - transform.parent.position.y, 0).normalized * speed * 10;
+            yield return null;
+        }
+
+        transform.parent.position = new Vector3(transform.parent.position.x, AttackDown);
+
+        Weakness.isRest = true;
+
+        yield return new WaitForSeconds(weaknessTime);
+
+        Weakness.isRest = false;
+
+        while (transform.parent.position.y < trans.y)
+        {
+            rb.velocity = new Vector3(0, trans.y - transform.parent.position.y, 0).normalized * speed;
+            yield return null;
+        }
+
+        transform.parent.position = new Vector3(transform.parent.position.x, trans.y);
     }
 
     public void DeathBoss()
