@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        FadeOut();
+      
 
         if (Instance == null)
         {
@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("SpiderBoss");
                 //보스 거미
                 break;
+                FadeOut();
         }
     }
 
@@ -209,6 +210,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartScene()
     {
+        FadeOut();
         switch (stage)
         {
             case 0:
@@ -242,6 +244,7 @@ public class GameManager : MonoBehaviour
                 stage--;
                 SceneManager.LoadScene("MiniStage3");
                 break;
+
         }
     }
 }
