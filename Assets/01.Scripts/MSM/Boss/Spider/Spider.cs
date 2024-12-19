@@ -10,6 +10,9 @@ public class Spider : MonoBehaviour
     private SpiderBall spiderBall;
     [SerializeField] private float coolTime;
     [SerializeField]Animator anim;
+    [SerializeField] WeaknessPoint Weakness;
+    [SerializeField] float weaknessTime;
+    bool isFirst = true;
     private void Awake()
     {
         spiderDown = GetComponentInChildren<SpiderDown>();
@@ -25,27 +28,36 @@ public class Spider : MonoBehaviour
     }
     private IEnumerator Attack()
     {
-        int rand = Random.Range(0, 4);
+        int rand = Random.Range(0, 7);
+        if (isFirst)
+        {
+            rand = Random.Range(0, 6);
+            isFirst = false;
+        }
         switch (rand)
         {
             case 0:
+            case 1:
                 yield return StartCoroutine(spiderDown.Attack());
                 break;
-            case 1:
+            case 2:
+            case 3:
                 spiderSpit.Attack();
                 AnimationPlayer.Instance.PlayAnimaiton(anim,"SpiderSpit");
                 SoundManager.Instance.ChangeMainStageVolume("spiderSpit", true, ISOund.SFX);
                 yield return new WaitForSeconds(0.3f);
                 break;
-            case 2:
+            case 4:
+            case 5:
                 spiderBall.Attack();
                 AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderSpit");
                 SoundManager.Instance.ChangeMainStageVolume("spiderSpit", true, ISOund.SFX);
                 yield return new WaitForSeconds(0.3f);
                 break;
             default:
-                //취약상태
-                yield return new WaitForSeconds(Random.Range(1.0f,2.1f));
+                Weakness.isRest = true;
+                yield return new WaitForSeconds(weaknessTime);
+                Weakness.isRest = false;
                 break;
         }
         AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderIdle");

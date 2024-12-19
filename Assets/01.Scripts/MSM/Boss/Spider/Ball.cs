@@ -44,7 +44,7 @@ public class Ball : MonoBehaviour
     {
         if (((1 << collision.gameObject.layer) & spit) != 0)
         {
-            speed += 0.75f;
+            speed += 0.5f;
             SetVelocity();
         }
     }
