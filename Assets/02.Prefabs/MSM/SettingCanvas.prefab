@@ -985,6 +985,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   setting: {fileID: 4245803856979606104}
   audioMixer: {fileID: 24100000, guid: 2859ded2b106be3419c946b43ebd8708, type: 2}
+  isCanESC: 1
+  master: {fileID: 8250178246414656208}
+  sFX: {fileID: 2689725988608576528}
+  backGround: {fileID: 3681006721700356026}
 --- !u!1 &5504816267860254562
 GameObject:
   m_ObjectHideFlags: 0
