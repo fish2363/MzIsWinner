@@ -753,7 +753,6 @@ MonoBehaviour:
   AttackTime: 5
   BulletPrefab: {fileID: 8449722352750648753, guid: 4ec179f50638c514083f13e9c9877cfe, type: 3}
   speed: 4
-  ani: {fileID: 0}
 --- !u!50 &470015148941486523
 Rigidbody2D:
   serializedVersion: 4
@@ -843,7 +842,7 @@ Animator:
   m_GameObject: {fileID: 5345057212345940937}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9aa209db3ae3f214493995eac92fed02, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
