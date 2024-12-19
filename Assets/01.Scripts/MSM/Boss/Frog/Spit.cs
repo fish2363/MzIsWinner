@@ -26,12 +26,15 @@ public class Spit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        IDamage damage = other.GetComponent<IDamage>();
-
-        if (damage != null)
+        if(other.gameObject.layer == LayerMask.NameToLayer("Wall")|| other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            damage.Damage(attackDamage);
+            IDamage damage = other.GetComponent<IDamage>();
+
+            if (damage != null)
+            {
+                damage.Damage(attackDamage);
+            }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
