@@ -54,6 +54,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e771b4e905d9f14478c4469bdc5774db, type: 3}
   - {fileID: 8300000, guid: f947573a809dd8d439b4bebd8e284fd6, type: 3}
   - {fileID: 8300000, guid: 6f8842b210904aa4b9c5d4210afdd1b5, type: 3}
+  - {fileID: 8300000, guid: 2d89d59de37da374c9cbf504ca0e6939, type: 3}
+  - {fileID: 8300000, guid: 0c50118f673b7644e826d483b23d618d, type: 3}
+  - {fileID: 8300000, guid: fb710c804f250be4597a3684b4e09444, type: 3}
+  - {fileID: 8300000, guid: 01dc33a429c2e04459bbe2a024fcf7a3, type: 3}
+  - {fileID: 8300000, guid: 3953210a12288104b80ad7356f70333a, type: 3}
+  - {fileID: 8300000, guid: 515d548661b248344b47d8d3d8c7b4a2, type: 3}
+  - {fileID: 8300000, guid: 80dab18368f191f4f93f299fecd3b970, type: 3}
+  - {fileID: 8300000, guid: 3af915b0eada8e44e93e291a0ad439ea, type: 3}
+  - {fileID: 8300000, guid: f41768dd846a4a942ad150f8c6bdabc1, type: 3}
   bgmAudioPlayer: {fileID: 1425968308727443816}
   vfxAudioPlayer: {fileID: 7073616253869219246}
 --- !u!1 &8138778064383345445

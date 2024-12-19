@@ -77,6 +77,8 @@ public class Spider : MonoBehaviour,IBoss
             yield return null;
         }
 
+        rb.velocity = Vector3.zero;
+
         transform.position = new Vector3(transform.position.x, AttackDown);
 
         Weakness.isRest = true;
@@ -90,6 +92,8 @@ public class Spider : MonoBehaviour,IBoss
             rb.velocity = new Vector3(0, trans.y - transform.position.y, 0).normalized * speed;
             yield return null;
         }
+
+        rb.velocity = Vector3.zero;
 
         transform.position = new Vector3(transform.position.x, trans.y);
     }

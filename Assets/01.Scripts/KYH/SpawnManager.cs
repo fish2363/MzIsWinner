@@ -21,8 +21,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     [SerializeField]
     private CinemachineVirtualCamera cinemachine;
 
-    private GameManager gameManager;
-
     [Header("ÄÆ¾À¼³Á¤°ª")]
     [SerializeField]
     private Image spawningBee;
@@ -33,15 +31,9 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     int idx;
 
-    private void Start()
-    {
-        Gamestart();
-    }
-
     public void Gamestart()
     {
         cinemachine = FindAnyObjectByType<CinemachineVirtualCamera>();
-        
         ReStart();
     }
 
@@ -70,8 +62,5 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         playerScript.currentChracter = characterList.characters[idx];
         cinemachine.Follow = playerScript.transform;
         OnSpawn?.Invoke();
-
-        gameManager = GetComponent<GameManager>();
-        gameManager.player = currentPlayer.transform;
     }
 }
