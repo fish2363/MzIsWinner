@@ -14,6 +14,7 @@ public class Spider : MonoBehaviour,IBoss
     [SerializeField] float weaknessTime;
     [SerializeField] float AttackDown;
     [SerializeField] float speed;
+    [SerializeField] BoxCollider2D box;
     Rigidbody2D rb;
     bool isFirst = true;
     private void Awake()
@@ -69,8 +70,8 @@ public class Spider : MonoBehaviour,IBoss
 
     public IEnumerator Weaknesss()
     {
+        box.enabled = false;
         Vector3 trans  = transform.position;
-
         while (transform.position.y > AttackDown)
         {
             rb.velocity = new Vector3(0, AttackDown - transform.position.y, 0).normalized * speed * 10;
@@ -86,7 +87,7 @@ public class Spider : MonoBehaviour,IBoss
         yield return new WaitForSeconds(weaknessTime);
 
         Weakness.isRest = false;
-
+        box.enabled = true;
         while (transform.position.y < trans.y)
         {
             rb.velocity = new Vector3(0, trans.y - transform.position.y, 0).normalized * speed;

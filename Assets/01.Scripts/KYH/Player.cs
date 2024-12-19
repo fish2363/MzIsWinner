@@ -101,6 +101,7 @@ public class Player : MonoBehaviour,IDamage
         moveSpeed = currentChracter.moveSpeed;
         MaxHp = currentChracter.maxHp;
         CurrentHp= MaxHp;
+        HpManager.Instance.SetActiveHp();
         ChangeState(StateEnum.Idle);
     }
 
@@ -214,6 +215,7 @@ public class Player : MonoBehaviour,IDamage
             SpriteCompo.DOColor(Color.red, 0.1f);
             SpriteCompo.DOColor(Color.white, 0.1f).SetDelay(0.5f);
             ScreenShakeManager.Instance.ScreenShake(20f, true, 0.2f, true, 0.5f);
+            HpManager.Instance.HpChange(CurrentHp);
             if (CurrentHp == 0)
                 Death();
         }

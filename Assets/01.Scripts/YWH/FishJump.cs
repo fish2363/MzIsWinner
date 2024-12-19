@@ -65,6 +65,7 @@ public class FishMovement : MonoBehaviour
 
     private IEnumerator ParabolicMove(Vector3 start, Vector3 end, float height, float duration)
     {
+
         float time = 0;
         while (time < duration)
         {
@@ -77,6 +78,7 @@ public class FishMovement : MonoBehaviour
             });
             float t = time / duration;
             Vector3 linearPosition = Vector3.Lerp(start, end, t);
+            SoundManager.Instance.ChangeMainStageVolume("FishJump", true, ISOund.SFX);
             float parabolicHeight = Mathf.Sin(Mathf.PI * t) * height;
             transform.position = new Vector3(linearPosition.x, linearPosition.y + parabolicHeight, linearPosition.z);
             time += Time.deltaTime;
