@@ -24,6 +24,7 @@ public class GunFish : MonoBehaviour
     }
     public void FindPlayer()
     {
+        print("Ff");
         player = FindAnyObjectByType<Player>().transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(FishBehaviorLoop());

@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
         //    RestartScene();
     }
 
-    private void LoadScene()
+    public void LoadScene()
     {
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
 
