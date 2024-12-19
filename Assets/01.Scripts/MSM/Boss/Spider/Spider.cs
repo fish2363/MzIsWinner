@@ -18,7 +18,7 @@ public class Spider : MonoBehaviour
     }
     private void Start()
     {
-        //targetTrans = FindAnyObjectByType<Player>().transform;
+        targetTrans = FindAnyObjectByType<Player>().transform;
         spiderDown.SetTarget(targetTrans);
         spiderDown.SetAnimator(anim);
         StartCoroutine(Attack());
