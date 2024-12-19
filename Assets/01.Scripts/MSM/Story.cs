@@ -16,6 +16,7 @@ public class Story : MonoBehaviour
     private void StoryStart()
     {
         Sequence seq = DOTween.Sequence();
+        seq.AppendInterval(timer);
         seq.Append(Book.DOLocalRotate(new Vector3(0,90,0), bookTimer));
         seq.AppendCallback(() => {
             storys[0].gameObject.SetActive(false);
