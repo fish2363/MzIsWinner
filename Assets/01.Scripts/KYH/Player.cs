@@ -110,7 +110,15 @@ public class Player : MonoBehaviour,IDamage
             if (isAttack) return;
 
             ChangeState(StateEnum.Dash);
+            isSkillLock = true;
+            StartCoroutine(SkillCoolTime());
         }
+    }
+
+    private IEnumerator SkillCoolTime()
+    {
+        yield return new WaitForSeconds(currentChracter.skillCool);
+        isSkillLock = false;
     }
 
     private void HandleAttackingEvent(bool isOnoff)

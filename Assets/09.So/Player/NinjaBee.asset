@@ -17,3 +17,4 @@ MonoBehaviour:
   character: 3
   beeIdx: 3
   frontImage: {fileID: -1678234995, guid: 77a6573485d346c43916556d529d9d59, type: 3}
+  skillCool: 3

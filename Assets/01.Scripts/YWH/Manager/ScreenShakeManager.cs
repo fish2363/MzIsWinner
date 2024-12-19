@@ -4,8 +4,10 @@ using UnityEngine;
 using Cinemachine;
 using DG.Tweening;
 
-public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
+public class ScreenShakeManager : MonoBehaviour
 {
+    public static ScreenShakeManager Instance;
+
     public CinemachineVirtualCamera virtualCamera;
     private CinemachineBasicMultiChannelPerlin noise;
     private CinemachineConfiner2D confiner;
@@ -14,7 +16,17 @@ public class ScreenShakeManager : MonoSingleton<ScreenShakeManager>
     [SerializeField] private GameObject particleSystem;
 
     private bool isFalling;
-
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         virtualCamera = GetComponent<CinemachineVirtualCamera>();

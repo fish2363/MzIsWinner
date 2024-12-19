@@ -12,10 +12,10 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
 
     public CharacterSOList characterList;
-    private GameObject currentPlayer;
+    public GameObject currentPlayer;
+    public CharacterSO currentChracter;
     [Header("플레이어 프리팹")]
-    [SerializeField]
-    private GameObject player;
+    public GameObject player;
     [HideInInspector]
     public Transform spawnPoint;
 
@@ -67,6 +67,7 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         cutScene.SetActive(true);
         spawningBee.sprite = characterList.characters[idx].frontImage;
+        currentChracter = characterList.characters[idx];
         yield return new WaitForSeconds(4f);
 
         cutScene.SetActive(false);
