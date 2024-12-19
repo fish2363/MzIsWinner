@@ -71,7 +71,8 @@ public class Player : MonoBehaviour,IDamage
     public bool isUndead { get; set; }
     public bool isShield { get; set; }
 
-    public SpriteRenderer bohoRenderer;
+    public ParticleSystem shieldParticle;
+    public ParticleSystem healingParticle;
 
     private void Awake()
     {
@@ -180,7 +181,7 @@ public class Player : MonoBehaviour,IDamage
         if(isShield)
         {
             StopCoroutine(ShieldRoutine());
-            bohoRenderer.DOFade(0f, 0.2f);
+            shieldParticle.Clear();
             isStopMove = false;
             isUndead = false;
             ChangeState(StateEnum.Idle);
@@ -214,7 +215,7 @@ public class Player : MonoBehaviour,IDamage
         yield return new WaitForSeconds(1f);
         isStopMove = false;
         isUndead = false;
-        bohoRenderer.DOFade(0f, 0.2f);
+        shieldParticle.Clear();
         yield return new WaitForSeconds(0.3f);
         ChangeState(StateEnum.Idle);
     }
