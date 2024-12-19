@@ -658,6 +658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bear
       objectReference: {fileID: 0}
+    - target: {fileID: 2073588667631216745, guid: 6b19f084696ca0348b18b7388ff5df1a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9133887081238451769, guid: 6b19f084696ca0348b18b7388ff5df1a, type: 3}
       propertyPath: targetTrans
       value: 
