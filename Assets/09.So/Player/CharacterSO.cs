@@ -6,7 +6,8 @@ public enum CharacterType
 {
     DashBee,
     StrongBee,
-    FatBee
+    FatBee,
+    NinjaBee
 }
 
 [CreateAssetMenu(menuName = "CharacterSO/Chracter")]
@@ -16,4 +17,5 @@ public class CharacterSO : ScriptableObject
     public float moveSpeed;
     public CharacterType character;
     public int beeIdx;
+    public Sprite frontImage;
 }

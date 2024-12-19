@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class SpawnManager : MonoSingleton<SpawnManager>
 {
@@ -16,6 +18,16 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     [SerializeField]
     private CinemachineVirtualCamera cinemachine;
 
+    [Header("ÄÆ¾À¼³Á¤°ª")]
+    [SerializeField]
+    private Image spawningBee;
+    [SerializeField]
+    private GameObject cutScene;
+
+    public bool IsGameStart { get; set; }
+
+    int idx;
+
     private void Awake()
     {
         ReStart();
@@ -25,9 +37,23 @@ public class SpawnManager : MonoSingleton<SpawnManager>
     {
         if (currentPlayer != null)
             Destroy(currentPlayer);
-        currentPlayer = Instantiate(player,spawnPoint);
+        
+        idx = Random.Range(0,characterList.characters.Count);
+        StartCoroutine(CutScene());
+        print(idx);
+        
+    }
+
+    private IEnumerator CutScene()
+    {
+        cutScene.SetActive(true);
+        spawningBee.sprite = characterList.characters[idx].frontImage;
+        yield return new WaitForSeconds(4f);
+
+        cutScene.SetActive(false);
+
+        currentPlayer = Instantiate(player, spawnPoint);
         currentPlayer.transform.SetParent(null);
-        int idx = Random.Range(0,characterList.characters.Count);
         Player playerScript = currentPlayer.GetComponent<Player>();
         playerScript.currentChracter = characterList.characters[idx];
         cinemachine.Follow = playerScript.transform;

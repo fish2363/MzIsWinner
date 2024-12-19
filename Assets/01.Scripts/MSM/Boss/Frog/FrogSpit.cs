@@ -25,5 +25,6 @@ public class FrogSpit : MonoBehaviour
                 angleIndex++;
             }
         }
+        SoundManager.Instance.ChangeMainStageVolume("frogSpit", true, ISOund.SFX);
     }
 }

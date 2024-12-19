@@ -9,7 +9,8 @@ public class WeaknessPoint : MonoBehaviour
     private LayerMask whatIsPlayer;
     [SerializeField]
     private float checkerRadius;
-
+    [SerializeField]
+    private ParticleSystem particle;
     public bool isRest;
     private bool isClear;
 
@@ -34,6 +35,7 @@ public class WeaknessPoint : MonoBehaviour
     {
         print("Å¬¸®¾î");
         isClear = true;
+        //particle.Play();
         ScreenShakeManager.Instance.SuccessAttack();
     }
 
