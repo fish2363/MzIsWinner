@@ -17,6 +17,8 @@ public class BearStamp : MonoBehaviour
     Rigidbody2D rb;
     private Transform target;
 
+    private ParticleSystem stampParticle;
+
     [SerializeField]
     private int attackDamage;
 
@@ -27,6 +29,7 @@ public class BearStamp : MonoBehaviour
         downY = DownY.position.y;
         rb = GetComponent<Rigidbody2D>();
         transform.position = new Vector3(0, upY + 3, 0);
+        stampParticle = GetComponentInChildren<ParticleSystem>();
     }
     public void SetTarget(Transform targetTrans)
     {
@@ -73,6 +76,8 @@ public class BearStamp : MonoBehaviour
             yield return null;
         }
         transform.position = new Vector3(transform.position.x, downY);
+        //dsdas
+        stampParticle.Play();
 
 
         while (transform.position.y < upY + 3)
