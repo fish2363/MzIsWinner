@@ -27,11 +27,8 @@ public class ButtonEffect : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
     }
     IEnumerator Click()
     {
-        GameManager.Instance.FadeIn();
-        yield return new WaitForSeconds(2);
         OnClick.Invoke();
-        yield return new WaitForSeconds(1);
-        GameManager.Instance.FadeOut();
+        yield return new WaitForSeconds(0.1f);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
