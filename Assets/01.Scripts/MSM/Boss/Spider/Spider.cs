@@ -18,7 +18,7 @@ public class Spider : MonoBehaviour
     }
     private void Start()
     {
-        targetTrans = FindAnyObjectByType<Player>().transform;
+        //targetTrans = FindAnyObjectByType<Player>().transform;
         spiderDown.SetTarget(targetTrans);
         spiderDown.SetAnimator(anim);
         StartCoroutine(Attack());
@@ -34,13 +34,13 @@ public class Spider : MonoBehaviour
             case 1:
                 spiderSpit.Attack();
                 AnimationPlayer.Instance.PlayAnimaiton(anim,"SpiderSpit");
-                SoundManager.Instance.ChangeMainStageVolume("SpiderSpit", true, ISOund.SFX);
+                SoundManager.Instance.ChangeMainStageVolume("spiderSpit", true, ISOund.SFX);
                 yield return new WaitForSeconds(0.3f);
                 break;
             case 2:
                 spiderBall.Attack();
                 AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderSpit");
-                SoundManager.Instance.ChangeMainStageVolume("SpiderSpit", true, ISOund.SFX);
+                SoundManager.Instance.ChangeMainStageVolume("spiderSpit", true, ISOund.SFX);
                 yield return new WaitForSeconds(0.3f);
                 break;
             default:
