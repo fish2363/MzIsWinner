@@ -9,7 +9,8 @@ public enum StateEnum
     Idle,
     Move,
     Attack,
-    Dash
+    Dash,
+    Death
 }
 
 public enum AnimationType
@@ -219,8 +220,8 @@ public class Player : MonoBehaviour,IDamage
 
     public void Death()
     {
-        //Time.timeScale = 0f;
-        StartCoroutine(DeathWaitRoutine());
+        ChangeState(StateEnum.Death);
+        
         //공격 잘못 박거나 체력 0
     }
 
@@ -238,11 +239,16 @@ public class Player : MonoBehaviour,IDamage
         yield return new WaitForSeconds(0.3f);
         ChangeState(StateEnum.Idle);
     }
-
+    public void DeathWait()
+    {
+        StartCoroutine(DeathWaitRoutine());
+    }
     private IEnumerator DeathWaitRoutine()
     {
         yield return new WaitForSeconds(1f);
-        //SpawnManager.Instance.ReStart();
+        Time.timeScale = 1f;
+        GameManager.Instance.RestartScene();
+        SpawnManager.Instance.ReStart();
 
         //부활인데 아직 ㄴㄴ
     }

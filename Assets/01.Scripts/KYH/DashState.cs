@@ -49,11 +49,13 @@ public class DashState : State
             _player.isUndead = true;
             _player.SpriteCompo.DOFade(0.3f, 0.2f);
             _player.RigidCompo.velocity = mouseDirect.normalized * _player.DashPower;
+            SpawnManager.Instance.skillUI.DOColor(Color.grey,0.2f);
 
             if (dashTime >= maxaDashTime)
             {
                 dashTime = 0;
                 _player.SpriteCompo.DOFade(1f, 0.2f);
+                SpawnManager.Instance.skillUI.DOColor(Color.white, 0.2f);
                 _player.isUndead = false;
                 _player.ChangeState(StateEnum.Idle);
             }
