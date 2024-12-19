@@ -18,6 +18,7 @@ public class DashState : State
     {
         base.Enter();
         print("´ë½¬");
+        if(_player != null)
         _player.RigidCompo.velocity = Vector2.zero;
 
         if (_player.inputReader.direction == Vector3.zero)
@@ -61,6 +62,7 @@ public class DashState : State
         }
         if (_player.currentChracter.beeIdx == 2)
         {
+            SoundManager.Instance.ChangeMainStageVolume("Healing", true, ISOund.SFX);
             dashTime += Time.deltaTime;
             _player.isUndead = true;
             AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo, "FatTired");

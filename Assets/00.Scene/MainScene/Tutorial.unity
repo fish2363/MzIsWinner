@@ -1312,6 +1312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 1565821791}
+  vignette: {fileID: 0}
+  deadVignette: {fileID: 0}
   particleSystem: {fileID: 0}
 --- !u!1001 &941810687
 PrefabInstance:
@@ -2508,7 +2510,7 @@ PrefabInstance:
     - target: {fileID: 1601329377025547426, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 53fd597b631a7a044b28c8e523504540, type: 2}
+      objectReference: {fileID: 11400000, guid: fb464d138e9344646b2d4660175bf2fe, type: 2}
     - target: {fileID: 1601329377025547426, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
       propertyPath: m_fontSizeBase
       value: 119.8
@@ -2516,7 +2518,7 @@ PrefabInstance:
     - target: {fileID: 1601329377025547426, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -2727808230055662209, guid: 53fd597b631a7a044b28c8e523504540, type: 2}
+      objectReference: {fileID: -2727808230055662209, guid: fb464d138e9344646b2d4660175bf2fe, type: 2}
     - target: {fileID: 1601329377025547426, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
@@ -2623,24 +2625,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7835474156086894110, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -466
+      value: -471
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8589731340216393888, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 178560827838546368}
   m_SourcePrefab: {fileID: 100100000, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
+--- !u!1 &2109544492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8589731340216393888, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
+  m_PrefabInstance: {fileID: 2109544491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &178560827838546367 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1601329377025547426, guid: 092e210e27c4a7e4b8b86957c50916e8, type: 3}
   m_PrefabInstance: {fileID: 2109544491}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2109544492}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &178560827838546368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109544492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ace8ced0e81c847968cdca0aeda757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typewriterStartsAutomatically: 0
+  animationLoop: 0
+  timeScale: 0
+  _text: dddddddddddddddddd
+  useDynamicScaling: 1
+  referenceFontSize: 10
+  isResettingTimeOnNewText: 1
+  useDefaultDatabases: 1
+  databaseBehaviors: {fileID: 11400000, guid: 46dcac4f38d0f6d489b21433c6334931, type: 2}
+  databaseAppearances: {fileID: 11400000, guid: ac32916768c31a04980465a3b4a6947c, type: 2}
+  useDefaultStyleSheet: 1
+  styleSheet: {fileID: 0}
+  databaseActions: {fileID: 11400000, guid: 24fcbc1fd4eed4a4f948a844588b99ad, type: 2}
+  defaultAppearancesTags:
+  - size
+  defaultDisappearancesTags:
+  - fade
+  defaultBehaviorsTags:
+  - wave
+  defaultTagsMode: 0
 --- !u!114 &1035494139592873547
 MonoBehaviour:
   m_ObjectHideFlags: 0

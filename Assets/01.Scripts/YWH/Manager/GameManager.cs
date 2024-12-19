@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        FadeOut();
+
         if (Instance == null)
         {
             Instance = this;
@@ -44,11 +46,13 @@ public class GameManager : MonoBehaviour
     public void FadeIn()
     {
         blackImage.DOFade(1,1);
+        blackImage.raycastTarget = true;
     }
 
     public void FadeOut()
     {
         blackImage.DOFade(0, 1);
+        blackImage.raycastTarget = false;
     }
 
     private void Update()
@@ -213,30 +217,30 @@ public class GameManager : MonoBehaviour
                 break;
             case 1:
                 //º¸½º °õ
-                SceneManager.LoadScene("MiniStage1");
+                SceneManager.LoadScene("River");
                 break;
             case 2:
-                SceneManager.LoadScene("MiniStage1");
+                SceneManager.LoadScene("River");
                 stage--;
                 //º¸½º °Å¹Ì
                 break;
             case 3:
-                SceneManager.LoadScene("MiniStage2");
+                SceneManager.LoadScene("Forest");
                 //º¸½º °³±¸¸®
                 break;
             case 4:
                 //º¸½º °õ
                 stage--;
-                SceneManager.LoadScene("MiniStage2");
+                SceneManager.LoadScene("Forest");
                 break;
             case 5:
                 //º¸½º °õ
-                SceneManager.LoadScene("MiniStage3");
+                SceneManager.LoadScene("Cave");
                 break;
             case 6:
                 //º¸½º °õ
                 stage--;
-                SceneManager.LoadScene("MiniStage3");
+                SceneManager.LoadScene("Cave");
                 break;
         }
     }

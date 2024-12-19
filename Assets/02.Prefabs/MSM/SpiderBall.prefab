@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8145412667425785294}
   - component: {fileID: 2718593871698260785}
   - component: {fileID: 6378340615618907093}
+  - component: {fileID: -4538204286178111731}
   m_Layer: 12
   m_Name: SpiderBall
   m_TagString: Untagged
@@ -171,3 +172,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-4538204286178111731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5229313731989811957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8917fbcd5e54684b84c17308f9802be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 1

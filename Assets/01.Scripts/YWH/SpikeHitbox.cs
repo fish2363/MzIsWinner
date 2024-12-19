@@ -16,6 +16,7 @@ public class SpikeHitbox : MonoBehaviour
     {
         if (!isFalling && collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            SoundManager.Instance.ChangeMainStageVolume("RockDrop", true, ISOund.SFX);
             if (isUp)
             spikeRigid.AddForce(Vector2.up * 5, ForceMode2D.Impulse);
             else
