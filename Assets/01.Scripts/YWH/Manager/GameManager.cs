@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        FadeOut();
+
         if (Instance == null)
         {
             Instance = this;
@@ -44,11 +46,13 @@ public class GameManager : MonoBehaviour
     public void FadeIn()
     {
         blackImage.DOFade(1,1);
+        blackImage.raycastTarget = true;
     }
 
     public void FadeOut()
     {
         blackImage.DOFade(0, 1);
+        blackImage.raycastTarget = false;
     }
 
     private void Update()
