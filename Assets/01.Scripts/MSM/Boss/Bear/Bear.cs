@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bear : MonoBehaviour
+public class Bear : MonoBehaviour,IBoss
 {
     [SerializeField]Transform targetTrans;
+    public ParticleSystem[] deathParticle;
+
     BearHead head;
     BearStamp stamp;
     BearScratch scratch;
+    public bool isDeath;
     bool first = true;
     private void Awake()
     {
@@ -64,5 +67,29 @@ public class Bear : MonoBehaviour
                 break;
         }
         StartCoroutine(BearHead());
+    }
+
+    public void DeathBoss()
+    {
+        isDeath = true;
+        StartCoroutine(DeadRoutine());
+    }
+    private IEnumerator DeadRoutine()
+    {
+        ScreenShakeManager.Instance.ScreenShake(5f, true, 5, true, 5f);
+        yield return new WaitForSeconds(3f);
+        ScreenShakeManager.Instance.ScreenShake(50f, true, 100, true, 2f);
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 0.2f;
+        ScreenShakeManager.Instance.ScreenShake(2f, true, 100, true, 1f);
+        for (int i = 0; i < deathParticle.Length; i++)
+        {
+            deathParticle[i].Play();
+        }
+        GameManager.Instance.FadeIn();
+        ScreenShakeManager.Instance.ScreenShake(0f, true, 100, true, 1f);
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 1f;
+        GameManager.Instance.NextStage();
     }
 }

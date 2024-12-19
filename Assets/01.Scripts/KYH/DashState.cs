@@ -18,6 +18,7 @@ public class DashState : State
     {
         base.Enter();
         print("´ë½¬");
+        if(_player != null)
         _player.RigidCompo.velocity = Vector2.zero;
 
         if (_player.inputReader.direction == Vector3.zero)

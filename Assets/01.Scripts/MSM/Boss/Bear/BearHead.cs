@@ -44,6 +44,7 @@ public class BearHead : MonoBehaviour
 
     public IEnumerator Weakness()
     {
+        WeaknessTarget.gameObject.SetActive(true);
         float time = 0;
         while (Mathf.Abs(transform.position.y - upEnd.position.y) > 0.1f)
         {
@@ -59,6 +60,7 @@ public class BearHead : MonoBehaviour
         WeaknessTarget.isRest = true;
         yield return new WaitForSeconds(upWaitTime + 1);
         WeaknessTarget.isRest = false;
+        WeaknessTarget.gameObject.SetActive(false);
         while (Mathf.Abs(transform.position.y - downEnd.position.y) > 0.1f)
         {
             Vector3 targetPosition = new Vector3(transform.position.x, downEnd.position.y, transform.position.z);

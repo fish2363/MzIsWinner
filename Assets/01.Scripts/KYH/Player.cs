@@ -253,7 +253,12 @@ public class Player : MonoBehaviour,IDamage
 
         //부활인데 아직 ㄴㄴ
     }
-
+    private void OnDestroy()
+    {
+        inputReader.OnAttackEvent -= HandleAttackEvent;
+        inputReader.OnAttackingEvent -= HandleAttackingEvent;
+        inputReader.OnDashEvent -= HandleDashEvent;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
