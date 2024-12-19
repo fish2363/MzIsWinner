@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WeaknessPoint : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class WeaknessPoint : MonoBehaviour
     private ParticleSystem particle;
     public bool isRest;
     private bool isClear;
+    [SerializeField] bool isSpider = false;
 
     [SerializeField]
     private GameObject aimTarget;
@@ -41,6 +43,10 @@ public class WeaknessPoint : MonoBehaviour
         ScreenShakeManager.Instance.SuccessAttack();
         GetComponentInParent<IBoss>().DeathBoss();
         AnimationPlayer.Instance.PlayAnimaiton(GetComponentInParent<Animator>(),"Death");
+        if (isSpider)
+        {
+            SceneManager.LoadScene("Ending");
+        }
     }
 
     private void OnDrawGizmos()

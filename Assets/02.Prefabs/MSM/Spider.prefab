@@ -259,6 +259,7 @@ MonoBehaviour:
   checkerRadius: 0.6
   particle: {fileID: 0}
   isRest: 0
+  isSpider: 1
   aimTarget: {fileID: 8461952215949132273}
 --- !u!1 &5683973261525630867
 GameObject:
