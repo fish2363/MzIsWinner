@@ -13,7 +13,11 @@ public class FishMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Vector3 originalScale;
 
-    private void Start()
+    private void Awake()
+    {
+        SpawnManager.Instance.OnSpawn += FindPlayer;
+    }
+    public void FindPlayer()
     {
         sprite = GetComponent<SpriteRenderer>();
         originalScale = transform.localScale;
@@ -60,5 +64,11 @@ public class FishMovement : MonoBehaviour
             transform.DOShakeRotation(0.3f, 1, 10, 90);
             ScreenShakeManager.Instance.ScreenShake(30, true, 0.3f, true, 0.2f);
         }
+    }
+
+
+    private void OnDisable()
+    {
+        SpawnManager.Instance.OnSpawn -= FindPlayer;
     }
 }
