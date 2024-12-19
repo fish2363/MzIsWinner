@@ -110,6 +110,7 @@ public class GameManager : MonoBehaviour
             case 2:
                 //보스 곰
                 SceneManager.LoadScene("River");
+                stage--;
                 break;
             case 3:
                 SceneManager.LoadScene("Forest");
@@ -118,6 +119,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 4:
                 SceneManager.LoadScene("Forest");
+                stage--;
                 //보스 개구리
                 break;
             case 5:
@@ -127,6 +129,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 6:
                 SceneManager.LoadScene("Cave");
+                stage--;
                 //보스 거미
                 break;
         }

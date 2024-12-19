@@ -119,6 +119,7 @@ public class Player : MonoBehaviour,IDamage
     private IEnumerator SkillCoolTime()
     {
         yield return new WaitForSeconds(currentChracter.skillCool);
+        SpawnManager.Instance.skillUI.DOColor(Color.white, 0.2f);
         isSkillLock = false;
     }
 
