@@ -2865,6 +2865,7 @@ MonoBehaviour:
   healingParticle: {fileID: 7334804086045481125}
   isSkillLock: 1
   isAttackLock: 1
+  isTutorial: 1
 --- !u!4 &4898751530245578118
 Transform:
   m_ObjectHideFlags: 0

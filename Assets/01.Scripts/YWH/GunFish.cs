@@ -108,7 +108,7 @@ public class GunFish : MonoBehaviour
         yield return new WaitForSeconds(1);
         transform.DOScale(transform.localScale * 1.25f, 0.3f);
         ScreenShakeManager.Instance.ScreenShake(5, true, 0.2f, true, 0.2f);
-
+        SoundManager.Instance.ChangeMainStageVolume("WaterGun",true, ISOund.SFX);
         GameObject prefab = Instantiate(shootPrefab);
         prefab.transform.SetLocalPositionAndRotation(transform.position, transform.rotation);
 
