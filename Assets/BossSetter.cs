@@ -27,10 +27,11 @@ public class BossSetter : MonoBehaviour
     }
     public void CameraShake()
     {
-        ScreenShakeManager.Instance.ScreenShake();
+        ScreenShakeManager.Instance.ScreenShake(20f, true, 0.2f, true, 0.5f);
     }
     public void StartBoss()
     {
         playerScript.isStopMove = false;
+        playerScript.isAttackLock = false;
     }
 }
