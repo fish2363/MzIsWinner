@@ -122,7 +122,7 @@ public class Frog : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(3.4f);
         weakPoint.GetComponent<BoxCollider2D>().enabled = true;
         isRest = false;
         weakPoint.isRest = false;

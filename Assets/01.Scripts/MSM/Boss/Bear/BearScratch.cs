@@ -38,6 +38,7 @@ public class BearScratch : MonoBehaviour
             warning.DOFade(0.5f, 1f);
             yield return new WaitForSeconds(1);
             warning.color = color;
+            SoundManager.Instance.ChangeMainStageVolume("Scratch", true, ISOund.SFX);
             while (Mathf.Abs(transform.position.y - y) > 0.1f)
             {
                 rb.velocity = new Vector3(0, y - transform.position.y, 0).normalized * BearSpeed;

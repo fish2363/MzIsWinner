@@ -30,6 +30,7 @@ public class FrogJump : MonoBehaviour
     {
         frog.frogFeet.enabled = true;
         AnimationPlayer.Instance.PlayAnimaiton(frog.frogAnimator, "FrogJump");
+        SoundManager.Instance.ChangeMainStageVolume("Jump", true, ISOund.SFX);
         StartCoroutine(SimulateProjectile());
     }
     private IEnumerator SimulateProjectile()

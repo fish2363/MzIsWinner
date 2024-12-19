@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 462599834119627588}
   - component: {fileID: 6882978158353310270}
   - component: {fileID: 17387947297588670}
-  m_Layer: 6
+  m_Layer: 14
   m_Name: WeakPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffb10425683f6347b2c04a467cfb2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTrans: {fileID: 0}
   frogAnimator: {fileID: 2570786317982649438}
   attackCoolTime: 1
   attackPlusJumpCool: 1.5
