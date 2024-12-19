@@ -14,12 +14,18 @@ public class SpiderEnemy : MonoBehaviour
     [SerializeField] float AttackTime;
     [SerializeField] GameObject BulletPrefab;
     [SerializeField] float speed;
+    Animator ani;
     private Rigidbody2D rb;
     float _timer;
     Transform PlayerTrans;
     private void Awake()
     {
+        ani = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+    private void Start()
+    {
+        AnimationPlayer.Instance.PlayAnimaiton(ani, "SpiderEnemy");
     }
     private void Update()
     {
