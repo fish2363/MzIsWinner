@@ -57,8 +57,22 @@ public class GameManager : MonoBehaviour
         //if (Input.GetMouseButtonDown(1))
         //    RestartScene();
     }
+    public void NewScene()
+    {
+        string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
+        var writer = new StreamWriter(File.Open(path, FileMode.OpenOrCreate));
+        writer.WriteLine($"{stage}");
+        writer.Close();
+        var reader = new StreamReader(new FileStream(path, FileMode.Open));
+        stageNum = reader.ReadLine();
+        reader.Close();
 
-    private void LoadScene()
+        stage = int.Parse(stageNum);
+
+        SceneManager.LoadScene("Tutorial");
+    }
+
+    public void LoadScene()
     {
         string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\stage.txt";
 
@@ -82,16 +96,20 @@ public class GameManager : MonoBehaviour
 
         switch (stage)
         {
+            case 0:
+                //보스 개구리
+                SceneManager.LoadScene("Tutorial");
+                break;
             case 1:
                 //보스 개구리
-                SceneManager.LoadScene("MiniStage1");
+                SceneManager.LoadScene("River");
                 break;
             case 2:
                 //보스 곰
                 SceneManager.LoadScene("FrogBoss");
                 break;
             case 3:
-                SceneManager.LoadScene("MiniStage2");
+                SceneManager.LoadScene("Forest");
 
                 //보스 거미
                 break;
@@ -101,7 +119,7 @@ public class GameManager : MonoBehaviour
                 break;
             case 5:
                 //보스 곰
-                SceneManager.LoadScene("MiniStage3");
+                SceneManager.LoadScene("Cave");
 
                 break;
             case 6:
