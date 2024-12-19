@@ -35,7 +35,7 @@ public class WeaknessPoint : MonoBehaviour
     {
         print("Å¬¸®¾î");
         isClear = true;
-        particle.Play();
+        //particle.Play();
         ScreenShakeManager.Instance.SuccessAttack();
     }
 
