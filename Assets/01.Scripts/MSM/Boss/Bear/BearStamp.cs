@@ -57,14 +57,7 @@ public class BearStamp : MonoBehaviour
 
         while (Mathf.Abs(transform.position.y - upY) > 0.1f)
         {
-            if(Mathf.Abs(transform.position.x - target.position.x) > 0.1f)
-            {
-                rb.velocity = new Vector3(target.position.x - transform.position.x, upY - transform.position.y, 0).normalized * BearSpeed / 2f;
-            }
-            else
-            {
-                rb.velocity = new Vector3(0, upY - transform.position.y, 0).normalized * BearSpeed / 2f;
-            }
+            rb.velocity = new Vector3(0, upY - transform.position.y, 0).normalized * BearSpeed *2f;
             yield return null;
         }
         transform.position = new Vector3(transform.position.x, upY);
