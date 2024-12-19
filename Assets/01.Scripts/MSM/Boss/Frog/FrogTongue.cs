@@ -30,8 +30,12 @@ public class FrogTongue : MonoBehaviour
 
     private void Awake()
     {
-        player = FindAnyObjectByType<Player>();
         tongueAnim = tongueSprite.GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        player = FindAnyObjectByType<Player>();
     }
 
     public void Attack()
@@ -54,6 +58,8 @@ public class FrogTongue : MonoBehaviour
             {
                 isTongue = false;
                 AnimationPlayer.Instance.PlayAnimaiton(tongueAnim, "Tongue");
+                tongue.GetComponentInChildren<ParticleSystem>().Play();
+                SoundManager.Instance.ChangeMainStageVolume("tongue", true, ISOund.SFX);
                 tongueWarning.DOFade(0f, 1f);
                 StartCoroutine(Routine());
             }

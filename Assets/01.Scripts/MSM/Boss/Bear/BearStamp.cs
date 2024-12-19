@@ -16,6 +16,12 @@ public class BearStamp : MonoBehaviour
     [SerializeField] float BearSpeed;
     Rigidbody2D rb;
     private Transform target;
+
+    private ParticleSystem stampParticle;
+
+    [SerializeField]
+    private int attackDamage;
+
     private void Awake()
     {
         y = Y.position.y;
@@ -23,6 +29,7 @@ public class BearStamp : MonoBehaviour
         downY = DownY.position.y;
         rb = GetComponent<Rigidbody2D>();
         transform.position = new Vector3(0, upY + 3, 0);
+        stampParticle = GetComponentInChildren<ParticleSystem>();
     }
     public void SetTarget(Transform targetTrans)
     {
@@ -57,14 +64,7 @@ public class BearStamp : MonoBehaviour
 
         while (Mathf.Abs(transform.position.y - upY) > 0.1f)
         {
-            if(Mathf.Abs(transform.position.x - target.position.x) > 0.1f)
-            {
-                rb.velocity = new Vector3(target.position.x - transform.position.x, upY - transform.position.y, 0).normalized * BearSpeed / 2f;
-            }
-            else
-            {
-                rb.velocity = new Vector3(0, upY - transform.position.y, 0).normalized * BearSpeed / 2f;
-            }
+            rb.velocity = new Vector3(0, upY - transform.position.y, 0).normalized * BearSpeed *2f;
             yield return null;
         }
         transform.position = new Vector3(transform.position.x, upY);
@@ -76,6 +76,9 @@ public class BearStamp : MonoBehaviour
             yield return null;
         }
         transform.position = new Vector3(transform.position.x, downY);
+        //dsdas
+        stampParticle.Play();
+        SoundManager.Instance.ChangeMainStageVolume("Stamp", true, ISOund.SFX);
 
 
         while (transform.position.y < upY + 3)
@@ -86,5 +89,14 @@ public class BearStamp : MonoBehaviour
         rb.velocity = Vector3.zero;
         transform.position = new Vector3(transform.position.x, upY + 3);
 
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        IDamage damage = other.GetComponent<IDamage>();
+
+        if (damage != null)
+        {
+            damage.Damage(attackDamage);
+        }
     }
 }

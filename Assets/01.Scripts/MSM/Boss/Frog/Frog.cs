@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Frog : MonoBehaviour
 {
-    [SerializeField]Transform targetTrans;
+    Transform targetTrans;
     public Animator frogAnimator;
 
     bool canAttack = true;
@@ -36,6 +36,7 @@ public class Frog : MonoBehaviour
     }
     private void Start()
     {
+        targetTrans = FindAnyObjectByType<Player>().transform;
         jump.TargetSet(targetTrans);
     }
     private void Update()
@@ -121,7 +122,7 @@ public class Frog : MonoBehaviour
 
     private IEnumerator Wait()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(3.4f);
         weakPoint.GetComponent<BoxCollider2D>().enabled = true;
         isRest = false;
         weakPoint.isRest = false;
@@ -131,6 +132,7 @@ public class Frog : MonoBehaviour
     {
         if (isRest) return;
         AnimationPlayer.Instance.PlayAnimaiton(frogAnimator, "FrogIdle");
+        SoundManager.Instance.ChangeMainStageVolume("Landing",true,ISOund.SFX);
         frogFeet.enabled = false;
 
     }

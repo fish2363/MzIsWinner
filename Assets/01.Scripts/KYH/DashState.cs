@@ -19,17 +19,25 @@ public class DashState : State
         base.Enter();
         print("´ë½¬");
         _player.RigidCompo.velocity = Vector2.zero;
-        mouseDirect = _player.inputReader.direction;
 
-        if(_player.currentChracter.beeIdx == 1)
+        if (_player.inputReader.direction == Vector3.zero)
+            mouseDirect = Vector2.right;
+        else
+            mouseDirect = _player.inputReader.direction;
+
+
+        if (_player.currentChracter.beeIdx == 1)
         {
             _player.isStopMove = true;
-            _player.bohoRenderer.DOFade(0.5f, 0.2f);
+            _player.shieldParticle.Play();
             _player.isUndead = true;
             _player.Shield();
         }
+        if (_player.currentChracter.beeIdx == 2)
+        {
+            _player.healingParticle.Play();
+        }
     }
-
     
 
     public override void StateUpdate()
@@ -54,9 +62,11 @@ public class DashState : State
         {
             dashTime += Time.deltaTime;
             _player.isUndead = true;
+            AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo, "FatTired");
             _player.SpriteCompo.DOFade(0.3f, 0.2f);
             _player.RigidCompo.velocity = Vector2.down * _player.DashPower;
-
+            if(_player.CurrentHp != _player.MaxHp)
+                _player.CurrentHp++;
             if (dashTime >= maxaDashTime)
             {
                 dashTime = 0;
