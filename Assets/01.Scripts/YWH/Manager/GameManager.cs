@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     public void FadeIn()
     {
+
         blackImage.DOFade(1,1);
         blackImage.raycastTarget = true;
     }
@@ -52,6 +53,11 @@ public class GameManager : MonoBehaviour
     public void FadeOut()
     {
         blackImage.DOFade(0, 1);
+        blackImage.raycastTarget = false;
+    }
+    public void WaitFadeOut()
+    {
+        blackImage.DOFade(0, 1).SetDelay(2);
         blackImage.raycastTarget = false;
     }
 
