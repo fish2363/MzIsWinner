@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spider : MonoBehaviour
+public class Spider : MonoBehaviour,IBoss
 {
     [SerializeField] Transform targetTrans;
     private SpiderDown spiderDown;
@@ -63,5 +63,10 @@ public class Spider : MonoBehaviour
         AnimationPlayer.Instance.PlayAnimaiton(anim, "SpiderIdle");
         yield return new WaitForSeconds(coolTime);
         StartCoroutine(Attack());
+    }
+
+    public void DeathBoss()
+    {
+
     }
 }

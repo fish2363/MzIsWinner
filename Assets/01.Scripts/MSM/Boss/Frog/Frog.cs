@@ -148,9 +148,9 @@ public class Frog : MonoBehaviour,IBoss
 
     private IEnumerator DeadRoutine()
     {
-        ScreenShakeManager.Instance.ScreenShake(20f, true, 5, true, 5f);
+        ScreenShakeManager.Instance.ScreenShake(5f, true, 5, true, 5f);
         yield return new WaitForSeconds(3f);
-        ScreenShakeManager.Instance.ScreenShake(20f, true, 1, true, 2f);
+        ScreenShakeManager.Instance.ScreenShake(50f, true, 100, true, 2f);
         yield return new WaitForSeconds(2f);
         Time.timeScale = 0.2f;
         ScreenShakeManager.Instance.ScreenShake(2f, true,100, true, 1f);
@@ -159,7 +159,9 @@ public class Frog : MonoBehaviour,IBoss
             deathParticle[i].Play();
         }
         GameManager.Instance.FadeIn();
+        ScreenShakeManager.Instance.ScreenShake(0f, true, 100, true, 1f);
         yield return new WaitForSeconds(2f);
+        Time.timeScale = 1f;
         GameManager.Instance.NextStage();
     }
 }
