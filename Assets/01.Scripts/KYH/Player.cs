@@ -33,13 +33,12 @@ public class Player : MonoBehaviour,IDamage
     [Header("이동속도")]
     public float moveSpeed;
 
-    [field: SerializeField] public Animator PlayerAnimator { get; private set; }
     public Rigidbody2D RigidCompo { get; private set; }
 
 
     [SerializeField]
     private Animator[] animators;
-    public Animator AnimatorCompo { get; private set; }
+    [field: SerializeField] public Animator AnimatorCompo { get; private set; }
     public SpriteRenderer SpriteCompo { get; private set; }
 
     private Dictionary<StateEnum, State> stateDictionary = new Dictionary<StateEnum, State>();

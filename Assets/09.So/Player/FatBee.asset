@@ -16,3 +16,4 @@ MonoBehaviour:
   moveSpeed: 5
   character: 2
   beeIdx: 2
+  frontImage: {fileID: 989548727, guid: d4780acaf24363e4e99035bea3e121db, type: 3}

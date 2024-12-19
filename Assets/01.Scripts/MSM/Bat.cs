@@ -53,6 +53,7 @@ public class Bat : MonoBehaviour
                 targetTrans = hit.transform;
             }
         }
+        
     }
 
     private IEnumerator WaitRoutine()

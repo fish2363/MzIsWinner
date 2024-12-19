@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49cb4626bcefeac44b353bb62b48f905, type: 3}
-  m_Name: DefalutBee
+  m_Name: NinjaBee
   m_EditorClassIdentifier: 
-  maxHp: 4
-  moveSpeed: 5
-  character: 0
-  beeIdx: 0
-  frontImage: {fileID: 1879222714, guid: 888a9995de891c247bad0fc8ed7b1178, type: 3}
+  maxHp: 2
+  moveSpeed: 12
+  character: 3
+  beeIdx: 3
+  frontImage: {fileID: -1678234995, guid: 77a6573485d346c43916556d529d9d59, type: 3}
