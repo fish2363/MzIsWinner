@@ -1372,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4712458384654003046, guid: 72c4eaa801ce413498a1e77ef5f9971a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1333
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5791244076472931080, guid: 72c4eaa801ce413498a1e77ef5f9971a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4689,7 +4689,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 265006724}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NewScene
+        m_MethodName: MainLoadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
