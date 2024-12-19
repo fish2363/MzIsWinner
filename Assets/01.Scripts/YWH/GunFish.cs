@@ -18,7 +18,7 @@ public class GunFish : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public GameObject shootPrefab;
 
-    private void Awake()
+    private void Start()
     {
         SpawnManager.Instance.OnSpawn += FindPlayer;
     }

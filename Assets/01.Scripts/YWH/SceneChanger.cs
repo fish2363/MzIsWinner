@@ -8,7 +8,7 @@ public class SceneChanger : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            GameManager.Instance.LoadScene();
+            GameManager.Instance.NextStage();
         }
     }
 

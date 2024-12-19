@@ -826,6 +826,8 @@ MonoBehaviour:
   checkerRadius: 0.54
   shieldParticle: {fileID: 6149085037829185516}
   healingParticle: {fileID: 5669000059884515895}
+  isSkillLock: 0
+  isAttackLock: 1
 --- !u!50 &5552182831506574244
 Rigidbody2D:
   serializedVersion: 4
@@ -1086,6 +1088,14 @@ PrefabInstance:
     - target: {fileID: 198536722342428144, guid: c105577ec49dfb3408a7a89c3b7730be, type: 3}
       propertyPath: playOnAwake
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 199717617902896242, guid: c105577ec49dfb3408a7a89c3b7730be, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 199717617902896242, guid: c105577ec49dfb3408a7a89c3b7730be, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1430084893
       objectReference: {fileID: 0}
     - target: {fileID: 199717617902896242, guid: c105577ec49dfb3408a7a89c3b7730be, type: 3}
       propertyPath: m_Materials.Array.size
