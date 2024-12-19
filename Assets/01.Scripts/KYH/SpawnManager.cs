@@ -77,8 +77,12 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
         cutScene.SetActive(false);
 
-        currentPlayer = Instantiate(player, spawnPoint);
-        currentPlayer.transform.SetParent(null);
+        if(currentPlayer == null)
+        {
+            currentPlayer = Instantiate(player, spawnPoint);
+            currentPlayer.transform.SetParent(null);
+        }
+        
         Player playerScript = currentPlayer.GetComponent<Player>();
         playerScript.currentChracter = characterList.characters[idx];
         cinemachine.Follow = playerScript.transform;
