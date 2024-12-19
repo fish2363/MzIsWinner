@@ -43,7 +43,7 @@ public class DashState : State
     public override void StateUpdate()
     {
         base.StateUpdate();
-        if(_player.currentChracter.beeIdx == 0)
+        if(_player.currentChracter.beeIdx == 0 || _player.currentChracter.beeIdx == 3)
         {
             dashTime += Time.deltaTime;
             _player.isUndead = true;
@@ -64,7 +64,7 @@ public class DashState : State
             _player.isUndead = true;
             AnimationPlayer.Instance.PlayAnimaiton(_player.AnimatorCompo, "FatTired");
             _player.SpriteCompo.DOFade(0.3f, 0.2f);
-            _player.RigidCompo.velocity = Vector2.down * _player.DashPower;
+            _player.RigidCompo.velocity = Vector2.down * _player.DashPower/2;
             if(_player.CurrentHp != _player.MaxHp)
                 _player.CurrentHp++;
             if (dashTime >= maxaDashTime)
