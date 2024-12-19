@@ -16,9 +16,8 @@ public class Main : MonoBehaviour
         SoundManager.Instance.ChangeMainStageVolume("Click", true, ISOund.SFX);
         Application.Quit();
     }
-    public void Story()
+    public void Stort()
     {
-        SoundManager.Instance.ChangeMainStageVolume("Click", true, ISOund.SFX);
         SceneManager.LoadScene("Story");
     }
 }

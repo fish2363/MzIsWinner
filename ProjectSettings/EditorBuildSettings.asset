@@ -35,7 +35,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scene/MSM/Story.unity
     guid: e1b72ac0cf4ff4741b1d92493664b92c
-  - enabled: 1
-    path: Assets/00.Scene/MSM/Ending.unity
-    guid: 2bf7afe66967bff4d9bbf35f8eea9713
   m_configObjects: {}
