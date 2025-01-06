@@ -143,6 +143,7 @@ public class Frog : MonoBehaviour,IBoss
     public void DeathBoss()
     {
         isDeath = true;
+        FindAnyObjectByType<Player>().isAttackLock = true;
         StartCoroutine(DeadRoutine());
     }
 
@@ -160,9 +161,10 @@ public class Frog : MonoBehaviour,IBoss
         }
         GameManager.Instance.FadeIn();
         ScreenShakeManager.Instance.ScreenShake(0f, true, 100, true, 1f);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         Time.timeScale = 1f;
         print("°³±¸¸® µðÁü");
+        GameManager.Instance.FadeOut();
         GameManager.Instance.NextStage();
     }
 }

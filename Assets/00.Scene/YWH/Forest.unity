@@ -23797,6 +23797,18 @@ PrefabInstance:
       propertyPath: InitialModule.startRotation.minCurve.m_RotationOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1504390690719435393, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504390690719435393, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504390690719435393, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 3084070663949236258, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
       propertyPath: virtualCamera
       value: 
@@ -23844,6 +23856,18 @@ PrefabInstance:
     - target: {fileID: 3382746934357550507, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563311402141218697, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563311402141218697, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563311402141218697, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 6116734641444024367, guid: 2cd3af374d36a6d46b7e89f03ca0e79c, type: 3}
       propertyPath: m_BoundingShape2D

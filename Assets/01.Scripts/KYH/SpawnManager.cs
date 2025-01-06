@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.UI;
-using UnityEngine.Playables;
 using System;
 
 public class SpawnManager : MonoSingleton<SpawnManager>
@@ -23,8 +21,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     public Action OnSpawn;
 
-    [SerializeField]
-    private CinemachineVirtualCamera cinemachine;
 
 
     [Header("ÄÆ¾À¼³Á¤°ª")]
@@ -35,7 +31,8 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     public bool IsGameStart { get; set; }
 
-    int idx;
+    [HideInInspector]
+    public int idx;
 
     private void Awake()
     {
@@ -51,7 +48,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
 
     public void Gamestart()
     {
-        cinemachine = FindAnyObjectByType<CinemachineVirtualCamera>();
         ReStart();
     }
 
@@ -76,16 +72,6 @@ public class SpawnManager : MonoSingleton<SpawnManager>
         yield return new WaitForSeconds(4f);
 
         cutScene.SetActive(false);
-
-        if(currentPlayer == null)
-        {
-            currentPlayer = Instantiate(player, spawnPoint);
-            currentPlayer.transform.SetParent(null);
-        }
-        
-        Player playerScript = currentPlayer.GetComponent<Player>();
-        playerScript.currentChracter = characterList.characters[idx];
-        cinemachine.Follow = playerScript.transform;
         OnSpawn?.Invoke();
     }
 }

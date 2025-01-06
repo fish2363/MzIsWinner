@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using System;
 using System.Collections;
@@ -9,7 +10,7 @@ public enum StateEnum
     Idle,
     Move,
     Attack,
-    Dash,
+    Skill,
     Death
 }
 
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour,IDamage
     public bool isAttack { get; set; }
 
     public CharacterSO currentChracter;
+    public BeeType currentBee;
 
     public LayerMask whatIsEntity;
 
@@ -76,6 +78,14 @@ public class Player : MonoBehaviour,IDamage
     public bool isSkillLock;
     public bool isAttackLock;
     public bool isTutorial;
+    public bool isSkillUsing;
+    public Vector2 mouseDirect;
+
+    private float maxaDashTime = 0.2f;
+    private float dashTime;
+
+    [SerializeField]
+    private CinemachineVirtualCamera cinemachine;
 
     private void Awake()
     {
@@ -96,33 +106,25 @@ public class Player : MonoBehaviour,IDamage
 
     private void Start()
     {
+        //currentChracter = SpawnManager.Instance.characterList.characters[SpawnManager.Instance.idx];
+        //cinemachine.Follow = transform;
         AnimatorCompo = animators[currentChracter.beeIdx];
         AnimatorCompo.gameObject.SetActive(true);
         SpriteCompo = AnimatorCompo.GetComponent<SpriteRenderer>();
         moveSpeed = currentChracter.moveSpeed;
         MaxHp = currentChracter.maxHp;
         CurrentHp= MaxHp;
+        currentBee = currentChracter.beeType;
         if(!isTutorial)
         HpManager.Instance.SetActiveHp();
         ChangeState(StateEnum.Idle);
     }
 
-    private void HandleDashEvent()
-    {
-        if(!isSkillLock)
-        {
-            if (isAttack) return;
-
-            ChangeState(StateEnum.Dash);
-            isSkillLock = true;
-            StartCoroutine(SkillCoolTime());
-        }
-    }
-
+    
     private IEnumerator SkillCoolTime()
     {
         yield return new WaitForSeconds(currentChracter.skillCool);
-        SpawnManager.Instance.skillUI.DOColor(Color.white, 0.2f);
+        //SpawnManager.Instance.skillUI.DOColor(Color.white, 0.2f);
         isSkillLock = false;
     }
 
@@ -142,6 +144,23 @@ public class Player : MonoBehaviour,IDamage
         stateDictionary[currentEnum].StateUpdate();
 
         GetWorldMousePosition();
+        if(isSkillUsing)
+        {
+            dashTime += Time.deltaTime;
+            if(currentBee == BeeType.Default || currentBee == BeeType.Ninja)
+                RigidCompo.velocity = mouseDirect.normalized * DashPower;
+
+            if (dashTime >= maxaDashTime)
+            {
+                dashTime = 0f;
+                SpriteCompo.DOFade(1f, 0.2f);
+                SpriteCompo.DOColor(Color.white, 0.2f);
+                moveSpeed = currentChracter.moveSpeed;
+                isUndead = false;
+                ChangeState(StateEnum.Idle);
+                isSkillUsing = false;
+            }
+        }
     }
 
     public Vector3 GetWorldMousePosition()
@@ -273,4 +292,27 @@ public class Player : MonoBehaviour,IDamage
         Gizmos.DrawWireSphere(transform.position, checkerRadius);
         Gizmos.color = Color.white;
     }
+
+
+
+
+
+
+
+
+
+
+    private void HandleDashEvent()
+    {
+        if (!isSkillLock)
+        {
+            if (isAttack) return;
+
+            ChangeState(StateEnum.Skill);
+            isSkillLock = true;
+            StartCoroutine(SkillCoolTime());
+        }
+    }
+
+
 }

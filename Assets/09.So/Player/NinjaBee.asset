@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 2
   moveSpeed: 12
-  character: 3
+  beeType: 3
   beeIdx: 3
   frontImage: {fileID: -1678234995, guid: 77a6573485d346c43916556d529d9d59, type: 3}
   skillImage: {fileID: -1694253625, guid: 48015bbfd0911d046b56e69070b33352, type: 3}

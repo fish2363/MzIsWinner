@@ -754,7 +754,7 @@ MonoBehaviour:
   currentChracter: {fileID: 0}
   whatIsEntity:
     serializedVersion: 2
-    m_Bits: 16448
+    m_Bits: 64
   MaxHp: 3
   CurrentHp: 0
   checkerRadius: 0.54
@@ -762,6 +762,7 @@ MonoBehaviour:
   healingParticle: {fileID: 5669000059884515895}
   isSkillLock: 0
   isAttackLock: 1
+  isTutorial: 0
 --- !u!50 &5552182831506574244
 Rigidbody2D:
   serializedVersion: 4
